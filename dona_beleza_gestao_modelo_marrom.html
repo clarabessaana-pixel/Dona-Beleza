@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#3f271f">
+<title>Dona Beleza • Gestão</title>
+<style>
+:root{
+ --brown:#4a2f25;--brown2:#6a4535;--brown3:#8b624d;
+ --cream:#f7eee7;--cream2:#ead8ca;--white:#fffaf6;
+ --text:#38261f;--muted:#806d63;--line:#dfcfc3;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+.app{min-height:100vh;background:linear-gradient(180deg,#3f271f 0 210px,var(--cream) 210px)}
+.top{padding:34px 20px 24px;color:#fff}
+.brand{display:flex;align-items:center;gap:12px}.logo{width:48px;height:48px;border-radius:15px;background:#d8b79f;color:var(--brown);display:grid;place-items:center;font-size:23px;font-weight:900}
+.brand h1{font-family:Georgia,serif;font-weight:500;font-size:25px;margin:0}.brand small{opacity:.75}
+.container{max-width:560px;margin:auto;padding:0 16px 32px}
+.hero{background:var(--white);border-radius:24px;padding:18px;box-shadow:0 10px 30px #2b1a151f;margin-bottom:14px}
+.hero h2{font-family:Georgia,serif;font-weight:500;margin:0 0 5px;font-size:23px}.hero p{margin:0;color:var(--muted);font-size:14px}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px}.kpi{background:var(--cream);border:1px solid var(--line);border-radius:16px;padding:13px}.kpi span{display:block;font-size:12px;color:var(--muted)}.kpi strong{display:block;margin-top:5px;font-size:19px}
+.menu{display:grid;grid-template-columns:1fr 1fr;gap:11px}.menu button{border:0;background:var(--white);border-radius:18px;padding:17px 14px;text-align:left;color:var(--text);box-shadow:0 4px 15px #2b1a150e;border:1px solid var(--line);font-size:15px;font-weight:800;min-height:82px}
+.menu button .ico{display:block;width:35px;height:35px;border-radius:11px;background:var(--cream2);display:grid;place-items:center;margin-bottom:9px;font-size:18px}
+.page{display:none}.page.active{display:block}
+.section{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:17px;margin-bottom:12px}
+.back{border:0;background:none;color:var(--brown2);font-weight:800;padding:0 0 14px;font-size:15px}
+h2{font-family:Georgia,serif;font-weight:500;margin:0 0 12px}.sub{font-size:13px;color:var(--muted);margin:-5px 0 15px}
+form{display:grid;gap:9px}label{font-size:12px;color:var(--muted);font-weight:800}input,select{width:100%;border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff;font-size:16px;color:var(--text)}.row{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.primary{border:0;background:var(--brown2);color:#fff;border-radius:12px;padding:13px;font-weight:800;font-size:15px}
+.list{display:grid;gap:8px;margin-top:14px}.item{border:1px solid var(--line);background:#fff;border-radius:13px;padding:12px}.item b{display:block}.item span{display:block;color:var(--muted);font-size:12px;margin-top:4px}
+.badge{display:inline-block;background:var(--cream2);color:var(--brown2);padding:5px 8px;border-radius:999px;font-size:11px;font-weight:800}
+.empty{padding:20px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:14px}
+.footer{text-align:center;color:#9b897f;font-size:11px;padding:18px}
+@media(min-width:700px){.container{max-width:900px}.menu{grid-template-columns:repeat(3,1fr)}.kpis{grid-template-columns:repeat(4,1fr)}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top">
+  <div class="container">
+    <div class="brand"><div class="logo">DB</div><div><h1>Dona Beleza</h1><small>Gestão do salão</small></div></div>
+  </div>
+</header>
+
+<main class="container">
+  <div id="home" class="page active">
+    <div class="hero">
+      <h2>Olá, administradora 🤎</h2>
+      <p>Controle seus profissionais, atendimentos, comissões e resultados em um só lugar.</p>
+      <div class="kpis">
+        <div class="kpi"><span>Faturamento</span><strong id="kSales">R$ 0,00</strong></div>
+        <div class="kpi"><span>Comissões</span><strong id="kComm">R$ 0,00</strong></div>
+        <div class="kpi"><span>Despesas</span><strong id="kExp">R$ 0,00</strong></div>
+        <div class="kpi"><span>Investimentos</span><strong id="kInv">R$ 0,00</strong></div>
+      </div>
+    </div>
+    <div class="menu">
+      <button onclick="go('profissionais')"><span class="ico">👩‍💼</span>Profissionais</button>
+      <button onclick="go('relatorios')"><span class="ico">📊</span>Relatórios</button>
+      <button onclick="go('atendimentos')"><span class="ico">✂️</span>Atendimentos</button>
+      <button onclick="go('fechamento')"><span class="ico">📆</span>Fechamento 15 dias</button>
+      <button onclick="go('despesas')"><span class="ico">🧾</span>Despesas</button>
+      <button onclick="go('investimentos')"><span class="ico">🏗️</span>Investimentos</button>
+    </div>
+    <div class="footer">Dona Beleza • Gestão financeira independente do agendamento</div>
+  </div>
+
+  <div id="profissionais" class="page">
+    <div class="section"><button class="back" onclick="go('home')">← Voltar</button><h2>Profissionais</h2><p class="sub">Cadastre quem trabalha no salão e sua porcentagem de comissão.</p>
+      <form id="pf"><label>Nome</label><input id="pn" required placeholder="Ex.: Maria"><label>Comissão (%)</label><input id="pr" required type="number" min="0" max="100" step=".01" placeholder="Ex.: 50"><button class="primary">Cadastrar profissional</button></form>
+      <div id="plist" class="list"></div>
+    </div>
+  </div>
+
+  <div id="atendimentos" class="page">
+    <div class="section"><button class="back" onclick="go('home')">← Voltar</button><h2>Atendimentos</h2><p class="sub">Registre quem atendeu, qual serviço foi realizado e o valor.</p>
+      <form id="sf"><label>Profissional que atendeu</label><select id="sp" required></select><label>Serviço</label><input id="ss" required placeholder="Ex.: Escova, progressiva, pé e mão"><div class="row"><div><label>Valor</label><input id="sv" required type="number" step=".01" min="0" placeholder="0,00"></div><div><label>Data</label><input id="sd" required type="date"></div></div><button class="primary">Registrar atendimento</button></form>
+      <div id="slist" class="list"></div>
+    </div>
+  </div>
+
+  <div id="relatorios" class="page">
+    <div class="section"><button class="back" onclick="go('home')">← Voltar</button><h2>Relatórios</h2><p class="sub">Acompanhe o resultado de cada profissional e do salão.</p>
+      <div id="rlist" class="list"></div>
+    </div>
+  </div>
+
+  <div id="fechamento" class="page">
+    <div class="section"><button class="back" onclick="go('home')">← Voltar</button><h2>Fechamento • 15 dias</h2><p class="sub">Confira o valor de comissão acumulado e marque o pagamento.</p>
+      <div id="flist" class="list"></div>
+    </div>
+  </div>
+
+  <div id="despesas" class="page">
+    <div class="section"><button class="back" onclick="go('home')">← Voltar</button><h2>Despesas</h2><p class="sub">Despesas ficam separadas dos investimentos.</p>
+      <form id="ef"><label>Descrição</label><input id="en" required placeholder="Ex.: Produtos"><div class="row"><div><label>Valor</label><input id="ev" required type="number" step=".01" min="0"></div><div><label>Data</label><input id="ed" required type="date"></div></div><button class="primary">Adicionar despesa</button></form>
+      <div id="elist" class="list"></div>
+    </div>
+  </div>
+
+  <div id="investimentos" class="page">
+    <div class="section"><button class="back" onclick="go('home')">← Voltar</button><h2>Investimentos</h2><p class="sub">Controle separado para equipamentos, melhorias e outros investimentos.</p>
+      <form id="if"><label>Descrição</label><input id="in" required placeholder="Ex.: Equipamento"><div class="row"><div><label>Valor</label><input id="iv" required type="number" step=".01" min="0"></div><div><label>Data</label><input id="id" required type="date"></div></div><button class="primary">Adicionar investimento</button></form>
+      <div id="ilist" class="list"></div>
+    </div>
+  </div>
+</main>
+</div>
+<script>
+const KEY="dona-beleza-gestao-v2";
+let db=JSON.parse(localStorage.getItem(KEY)||'{"professionals":[],"sales":[],"expenses":[],"investments":[],"payments":[]}');
+const $=id=>document.getElementById(id), money=v=>Number(v||0).toLocaleString("pt-BR",{style:"currency",currency:"BRL"}), today=()=>new Date().toISOString().slice(0,10);
+function save(){localStorage.setItem(KEY,JSON.stringify(db));render()}
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function go(id){document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));$(id).classList.add("active");window.scrollTo({top:0,behavior:"smooth"});render()}
+$("pf").onsubmit=e=>{e.preventDefault();db.professionals.push({id:Date.now(),name:$("pn").value.trim(),rate:+$("pr").value});e.target.reset();save()}
+$("sf").onsubmit=e=>{e.preventDefault();let p=db.professionals.find(x=>x.id==$("sp").value);if(!p)return alert("Cadastre um profissional primeiro.");let value=+$("sv").value;db.sales.push({id:Date.now(),profId:p.id,prof:p.name,service:$("ss").value.trim(),value,rate:p.rate,commission:value*p.rate/100,date:$("sd").value});e.target.reset();$("sd").value=today();save()}
+$("ef").onsubmit=e=>{e.preventDefault();db.expenses.push({id:Date.now(),name:$("en").value.trim(),value:+$("ev").value,date:$("ed").value});e.target.reset();$("ed").value=today();save()}
+$("if").onsubmit=e=>{e.preventDefault();db.investments.push({id:Date.now(),name:$("in").value.trim(),value:+$("iv").value,date:$("id").value});e.target.reset();$("id").value=today();save()}
+function render(){
+let sales=db.sales.reduce((a,x)=>a+x.value,0),comm=db.sales.reduce((a,x)=>a+x.commission,0),exp=db.expenses.reduce((a,x)=>a+x.value,0),inv=db.investments.reduce((a,x)=>a+x.value,0);
+$("kSales").textContent=money(sales);$("kComm").textContent=money(comm);$("kExp").textContent=money(exp);$("kInv").textContent=money(inv);
+$("sp").innerHTML=db.professionals.length?db.professionals.map(p=>`<option value="${p.id}">${esc(p.name)} • ${p.rate}%</option>`).join(""):'<option value="">Cadastre um profissional</option>';
+$("plist").innerHTML=db.professionals.map(p=>{let a=db.sales.filter(s=>s.profId==p.id),v=a.reduce((x,s)=>x+s.value,0),c=a.reduce((x,s)=>x+s.commission,0);return `<div class="item"><b>${esc(p.name)}</b><span><span class="badge">${p.rate}% comissão</span> • ${a.length} atendimentos • faturou ${money(v)} • comissão ${money(c)}</span></div>`}).join("")||'<div class="empty">Nenhum profissional cadastrado.</div>';
+$("slist").innerHTML=[...db.sales].reverse().map(s=>`<div class="item"><b>${esc(s.service)} • ${money(s.value)}</b><span>${esc(s.prof)} atendeu • ${s.date} • comissão ${money(s.commission)}</span></div>`).join("")||'<div class="empty">Nenhum atendimento registrado.</div>';
+$("rlist").innerHTML=db.professionals.map(p=>{let a=db.sales.filter(s=>s.profId==p.id),v=a.reduce((x,s)=>x+s.value,0),c=a.reduce((x,s)=>x+s.commission,0),sal=v-c;return `<div class="item"><b>${esc(p.name)}</b><span>Atendimentos: ${a.length} • Faturamento: ${money(v)} • Comissão: ${money(c)} • Parte do salão: ${money(sal)}</span></div>`}).join("")||'<div class="empty">Cadastre profissionais para gerar relatórios.</div>';
+$("flist").innerHTML=db.professionals.map(p=>{let c=db.sales.filter(s=>s.profId==p.id).reduce((x,s)=>x+s.commission,0),paid=db.payments.filter(x=>x.profId==p.id).reduce((x,s)=>x+s.value,0),due=Math.max(0,c-paid);return `<div class="item"><b>${esc(p.name)}</b><span>Comissão acumulada: ${money(c)} • Já pago: ${money(paid)}</span><strong style="display:block;margin-top:6px">A pagar: ${money(due)}</strong>${due?`<button class="primary" style="margin-top:9px" onclick="pay(${p.id},${due})">Marcar pagamento</button>`:"<span class='badge'>Em dia</span>"}</div>`}).join("")||'<div class="empty">Nenhum profissional cadastrado.</div>';
+$("elist").innerHTML=[...db.expenses].reverse().map(x=>`<div class="item"><b>${esc(x.name)}</b><span>${x.date} • ${money(x.value)}</span></div>`).join("")||'<div class="empty">Nenhuma despesa.</div>';
+$("ilist").innerHTML=[...db.investments].reverse().map(x=>`<div class="item"><b>${esc(x.name)}</b><span>${x.date} • ${money(x.value)}</span></div>`).join("")||'<div class="empty">Nenhum investimento.</div>';
+}
+function pay(id,value){if(confirm("Confirmar pagamento de "+money(value)+"?")){db.payments.push({id:Date.now(),profId:id,value,date:today()});save()}}
+["sd","ed","id"].forEach(x=>$(x).value=today());render();
+</script>
+</body></html>
