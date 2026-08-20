@@ -1,331 +1,765 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#b88a67">
-<title>Dona Beleza | Salão & Estética</title>
-<style>
-:root{--bg:#faf7f3;--card:#fff;--ink:#4b352a;--muted:#76665c;--gold:#b88a67;--line:#e7dbd1;--soft:#f1e7df;--dark:#463229}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.5}
-a{text-decoration:none;color:inherit}button,input,select{font:inherit}
-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
-.nav{max-width:1120px;margin:auto;min-height:72px;padding:8px 18px;display:flex;align-items:center;justify-content:space-between}
-.brand{display:flex;align-items:center;gap:10px}.mark{width:48px;height:48px;display:grid;place-items:center;border:1.5px solid var(--gold);color:var(--gold);font:700 23px Georgia,serif;border-radius:14px 4px 14px 4px}
-.brand strong{display:block;font:700 19px Georgia,serif;letter-spacing:1.8px}.brand small{display:block;font-size:9px;letter-spacing:3px;color:var(--muted)}
-.links{display:flex;gap:18px;font-size:13px;font-weight:700}.menu{display:none;border:0;background:none;font-size:28px;color:var(--ink)}
-.hero{max-width:1120px;margin:auto;padding:52px 24px 58px;display:grid;grid-template-columns:1fr .9fr;gap:28px;align-items:center;min-height:390px;background:linear-gradient(90deg,#faf7f3 0%,#faf7f3 52%,#ead9ca 100%)}
-.eyebrow{letter-spacing:4px;color:var(--gold);font-size:12px;font-weight:700}.hero h1{font:600 clamp(38px,5vw,58px)/1.02 Georgia,serif;margin:12px 0;color:#4a3025}.hero p{font-size:17px;color:var(--muted);max-width:520px}
-.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.btn{border:1px solid var(--gold);border-radius:10px;padding:12px 18px;font-weight:700;cursor:pointer}.primary{background:var(--gold);color:#fff}.secondary{background:#fff;color:var(--gold)}
-.hero-art{min-height:280px;border-radius:28px;background:linear-gradient(145deg,#fff8f2,#cba98f);display:grid;place-items:center;box-shadow:inset 0 0 0 1px rgba(91,64,51,.08)}.hero-logo{font:700 74px Georgia,serif;color:var(--gold);text-align:center}.hero-logo span{display:block;font:700 14px Arial;letter-spacing:5px;color:var(--ink);margin-top:-8px}
-section{max-width:1120px;margin:auto;padding:54px 20px}.title{text-align:center;margin-bottom:28px}.title small{color:var(--gold);letter-spacing:4px;font-weight:700}.title h2{font:600 32px Georgia,serif;margin:6px 0}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 8px 25px rgba(91,64,51,.05)}.card h3{margin:0 0 8px;font-size:16px}.card p{margin:0;color:var(--muted);font-size:13px}
-.services{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.service-list{list-style:none;padding:0;margin:0}.service-list li{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:14px}.service-list li:last-child{border:0}.price{font-weight:700;color:var(--gold);white-space:nowrap}
-.professionals .card{text-align:center}.avatar{width:82px;height:82px;border-radius:50%;margin:0 auto 12px;background:linear-gradient(145deg,#e5cfbd,#b88a67);display:grid;place-items:center;color:#fff;font:700 25px Georgia,serif}.professional-services{color:var(--muted);font-size:12px;min-height:58px}
-.info{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:0;background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px}.info div{padding:8px 18px;border-right:1px solid var(--line)}.info div:last-child{border:0}.info h3{font-size:13px;margin:0 0 5px}.info p{margin:0;color:var(--muted);font-size:13px}
-.booking{max-width:780px;margin:auto;background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 10px 30px rgba(91,64,51,.06)}.form{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}.field label{font-size:13px;font-weight:700}.field input,.field select{border:1px solid #d9ccc2;border-radius:9px;padding:12px;background:#fff;color:var(--ink);width:100%}
-.procedure-picker{display:grid;grid-template-columns:1fr 1fr;gap:8px}.check{border:1px solid var(--line);border-radius:9px;padding:9px;background:#fcfaf8}.check input{width:auto;margin-right:6px}.note{font-size:12px;color:var(--muted);margin-top:6px}.booking .btn{width:100%;margin-top:8px}.status{margin-top:12px;padding:10px;border-radius:9px;display:none;font-size:13px}.status.ok{display:block;background:#edf7ee;color:#28633a}.status.error{display:block;background:#fff0ee;color:#9b3428}
-.admin{background:#f4ece5;border-radius:22px}.admin-login{max-width:520px;margin:auto}.admin-panel{display:none}.admin-panel.active{display:block}.admin-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:15px}.table-wrap{overflow:auto;background:#fff;border:1px solid var(--line);border-radius:14px}.table{width:100%;border-collapse:collapse;min-width:760px}.table th,.table td{padding:10px;border-bottom:1px solid var(--line);text-align:left;font-size:12px}.table th{background:#faf7f3}.danger{border:1px solid #c77;background:#fff;color:#a33}
-.footer{background:var(--dark);color:#fff;text-align:center;padding:30px 20px}.footer p{opacity:.8;font-size:12px}.bottom{display:none}
-@media(max-width:800px){.links{display:none}.menu{display:block}.hero{grid-template-columns:1fr;padding:38px 18px}.hero-art{min-height:180px}.grid{grid-template-columns:1fr 1fr}.services{grid-template-columns:1fr}.info{grid-template-columns:1fr}.info div{border-right:0;border-bottom:1px solid var(--line)}.info div:last-child{border-bottom:0}.form{grid-template-columns:1fr}.field.full{grid-column:auto}.bottom{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:60;background:#fff;border-top:1px solid var(--line);justify-content:space-around;padding:8px 4px}.bottom a{font-size:10px;text-align:center;color:var(--muted)}}
-@media(max-width:480px){section{padding:40px 14px}.grid{gap:9px}.card{padding:15px 10px}.professional-services{font-size:11px}.procedure-picker{grid-template-columns:1fr}.hero h1{font-size:39px}.brand strong{font-size:16px}.brand small{font-size:8px}.mark{width:42px;height:42px;font-size:20px}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#b88978">
+  <meta name="description" content="Dona Beleza - Salão & Estética. Agende seu horário pelo celular ou computador.">
+  <title>Dona Beleza | Salão & Estética</title>
+
+  <style>
+    :root{
+      --bg:#f8f2eb;
+      --card:#fffdf9;
+      --primary:#8b5e4b;
+      --primary-dark:#5e3d31;
+      --text:#2f241f;
+      --muted:#75645c;
+      --line:#e4d5c9;
+      --soft:#efe2d7;
+      --beige:#d8bda8;
+      --cream:#f4eadf;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial,Helvetica,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.5;
+    }
+    a{text-decoration:none;color:inherit}
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:20;
+      background:rgba(250,247,243,.96);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      max-width:1100px;
+      margin:auto;
+      min-height:70px;
+      padding:12px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+    .brand strong{display:block;font-size:21px}
+    .brand span{font-size:12px;color:var(--muted);letter-spacing:1.5px}
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:11px;
+      min-width:max-content;
+    }
+    .logo-mark{
+      width:48px;
+      height:48px;
+      border:1.5px solid var(--primary);
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      position:relative;
+      background:linear-gradient(145deg,#fffaf4,#ead8c8);
+      box-shadow:0 5px 15px rgba(78,49,37,.10);
+    }
+    .logo-mark:before,.logo-mark:after{
+      content:"";
+      position:absolute;
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:var(--beige);
+      top:5px;
+    }
+    .logo-mark:before{left:8px}
+    .logo-mark:after{right:8px}
+    .logo-mark span{
+      color:var(--primary-dark);
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:17px;
+      font-weight:700;
+      letter-spacing:-1px;
+    }
+    .logo-copy{
+      display:flex;
+      flex-direction:column;
+      line-height:1.05;
+    }
+    .logo-copy strong{
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:18px;
+      letter-spacing:1.4px;
+      color:var(--primary-dark);
+    }
+    .logo-copy small{
+      margin-top:5px;
+      font-size:9px;
+      letter-spacing:2.1px;
+      color:var(--muted);
+    }
+
+    .links{display:flex;gap:18px;font-size:14px}
+    .links a:hover{color:var(--primary-dark)}
+
+    main{padding-bottom:30px}
+    section{max-width:1100px;margin:auto;padding:70px 20px}
+
+    .hero{
+      min-height:520px;
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      align-items:center;
+      gap:45px;
+    }
+    .eyebrow{
+      color:var(--primary-dark);
+      font-size:13px;
+      font-weight:bold;
+      letter-spacing:2px;
+      text-transform:uppercase;
+    }
+    h1{font-size:clamp(38px,6vw,64px);line-height:1.05;margin:12px 0 18px}
+    h2{font-size:32px;margin:0 0 10px}
+    .lead{font-size:18px;color:var(--muted);max-width:650px}
+    .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:48px;
+      padding:0 20px;
+      border-radius:12px;
+      border:1px solid var(--primary);
+      background:var(--primary);
+      color:white;
+      font-weight:bold;
+      cursor:pointer;
+    }
+    .btn.secondary{background:white;color:var(--primary-dark)}
+    .btn.whatsapp{background:var(--primary);border-color:var(--primary)}
+
+    .hero-card{
+      min-height:330px;
+      border-radius:28px;
+      background:linear-gradient(145deg,#e8d5c4,#f7eee8);
+      border:1px solid var(--line);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:35px;
+      box-shadow:0 18px 45px rgba(80,50,40,.10);
+    }
+    .hero-card div{max-width:350px}
+    .hero-card .symbol{
+      width:96px;
+      height:96px;
+      margin:0 auto 18px;
+      border-radius:50%;
+      border:1px solid rgba(139,94,75,.45);
+      background:rgba(255,253,249,.55);
+      display:grid;
+      place-items:center;
+      box-shadow:0 10px 25px rgba(78,49,37,.08);
+    }
+    .db-flower{
+      color:var(--primary-dark);
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:31px;
+      font-weight:700;
+      letter-spacing:-2px;
+      position:relative;
+    }
+    .db-flower:before,
+    .db-flower:after{
+      content:"";
+      position:absolute;
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      border:1px solid var(--beige);
+      top:2px;
+    }
+    .db-flower:before{left:-18px}
+    .db-flower:after{right:-18px}
+
+    .title{text-align:center;margin-bottom:35px}
+    .title p{color:var(--muted);margin-top:6px}
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:22px;
+      box-shadow:0 8px 25px rgba(80,50,40,.05);
+    }
+    .card h3{margin:0 0 7px}
+    .card p{margin:0;color:var(--muted)}
+    .duration{display:inline-block;margin-top:12px;color:var(--primary-dark);font-weight:bold;font-size:13px}
+
+    .booking{
+      max-width:800px;
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:28px;
+      box-shadow:0 15px 40px rgba(80,50,40,.07);
+    }
+    .form-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+    .field{display:flex;flex-direction:column;gap:7px}
+    .field.full{grid-column:1/-1}
+    label{font-weight:bold;font-size:14px}
+    input,select,textarea{
+      width:100%;
+      border:1px solid #d9cbc4;
+      border-radius:12px;
+      padding:13px 14px;
+      background:white;
+      color:var(--text);
+      font:inherit;
+      outline:none;
+    }
+    input:focus,select:focus,textarea:focus{border-color:var(--primary)}
+    textarea{min-height:90px;resize:vertical}
+
+    .notice{
+      margin:18px 0;
+      padding:13px 15px;
+      background:var(--soft);
+      border-radius:12px;
+      color:#5d4d47;
+      font-size:14px;
+    }
+    .notice strong{display:block;margin-bottom:2px}
+
+    .status{
+      margin-top:14px;
+      padding:12px;
+      border-radius:10px;
+      display:none;
+      font-size:14px;
+    }
+    .status.error{display:block;background:#fff0f0;color:#a33}
+    .status.ok{display:block;background:#edf9f0;color:#236b35}
+
+    .validity{
+      display:inline-block;
+      margin-top:12px;
+      padding:5px 9px;
+      border-radius:999px;
+      background:var(--soft);
+      color:var(--primary-dark);
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.4px;
+      text-transform:uppercase;
+    }
+    .price{
+      margin-top:14px;
+      font-size:22px;
+      font-weight:800;
+      color:var(--primary-dark);
+    }
+    .price small{
+      font-size:12px;
+      font-weight:600;
+      color:var(--muted);
+    }
+    .combo-card{
+      position:relative;
+      overflow:hidden;
+    }
+    .combo-card:before{
+      content:"COMBO";
+      position:absolute;
+      top:13px;
+      right:-31px;
+      transform:rotate(35deg);
+      background:var(--primary);
+      color:#fff;
+      font-size:8px;
+      letter-spacing:1.5px;
+      padding:5px 34px;
+    }
+    .section-note{
+      max-width:700px;
+      margin:0 auto 28px;
+      text-align:center;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .contact{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+    .contact .card a{color:var(--primary-dark);font-weight:bold}
+
+    footer{
+      background:#332a27;
+      color:#fff;
+      text-align:center;
+      padding:35px 20px;
+    }
+    footer p{margin:5px 0;color:#ddd}
+
+    .bottom{
+      display:none;
+    }
+
+    @media(max-width:800px){
+      .links{display:none}
+      .hero{grid-template-columns:1fr;min-height:auto;padding-top:50px}
+      .hero-card{min-height:250px}
+      .cards{grid-template-columns:1fr 1fr}
+      .contact{grid-template-columns:1fr}
+    }
+
+    @media(max-width:560px){
+      section{padding:50px 15px}
+      .cards{grid-template-columns:1fr}
+      .form-grid{grid-template-columns:1fr}
+      .field.full{grid-column:auto}
+      .booking{padding:20px}
+      .bottom{
+        position:fixed;
+        bottom:0;left:0;right:0;
+        z-index:30;
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:8px;
+        padding:10px;
+        background:rgba(255,255,255,.96);
+        border-top:1px solid var(--line);
+      }
+      .bottom .btn{min-height:44px;padding:0 10px}
+      footer{padding-bottom:90px}
+    }
+  </style>
 </head>
+
 <body>
-<header><nav class="nav"><a class="brand" href="#inicio"><div class="mark">DB</div><div><strong>DONA BELEZA</strong><small>SALÃO & ESTÉTICA</small></div></a><div class="links"><a href="#procedimentos">Procedimentos</a><a href="#valores">Valores</a><a href="#profissionais">Profissionais</a><a href="#agendamento">Agendar</a><a href="#salao">Área do salão</a></div><button class="menu" onclick="document.querySelector('.links').classList.toggle('show')">☰</button></nav></header>
-<main id="inicio">
-<section class="hero"><div><div class="eyebrow">REALCE SUA BELEZA</div><h1>Seu melhor momento é aqui!</h1><p>Beleza, cuidado e estilo em um só lugar. Escolha o procedimento, a profissional, o dia e o horário.</p><div class="actions"><a class="btn primary" href="#agendamento">Agendar agora</a><a class="btn secondary" href="https://wa.me/5562996344257" target="_blank" rel="noopener">WhatsApp</a></div></div><div class="hero-art"><div class="hero-logo">DB<span>DONA BELEZA<br>SALÃO & ESTÉTICA</span></div></div></section>
+<header>
+  <nav class="nav">
+    <a class="brand" href="#inicio" aria-label="Dona Beleza - início">
+      <span class="logo-mark" aria-hidden="true">
+        <span>DB</span>
+      </span>
+      <span class="logo-copy">
+        <strong>DONA BELEZA</strong>
+        <small>SALÃO & ESTÉTICA</small>
+      </span>
+    </a>
+    <div class="links">
+      <a href="#combos">Combos</a>
+      <a href="#procedimentos">Avulsos</a>
+      <a href="#agendamento">Agendamento</a>
+      <a href="#contato">Contato</a>
+    </div>
+    <a class="btn" href="#agendamento">Agendar</a>
+  </nav>
+</header>
 
-<section id="procedimentos"><div class="title"><small>BELEZA E CUIDADO</small><h2>Procedimentos</h2></div><div class="grid"><div class="card"><h3>💅 Unhas</h3><p>Manicure, pedicure, alongamento, esmaltação em gel, banho em gel e blindagem.</p></div><div class="card"><h3>✨ Sobrancelhas</h3><p>Sobrancelha, design e design com henna.</p></div><div class="card"><h3>🧖 Estética</h3><p>Limpeza de pele e depilação.</p></div><div class="card"><h3>💇 Cabelos</h3><p>Progressiva, mechas, escova, babyliss, coloração, tranças e finalização.</p></div></div></section>
+<main>
+  <section id="inicio" class="hero">
+    <div>
+      <div class="eyebrow">Dona Beleza</div>
+      <h1>Seu momento de beleza começa aqui.</h1>
+      <p class="lead">
+        Escolha o procedimento, informe seus dados e envie sua solicitação
+        diretamente pelo WhatsApp do salão.
+      </p>
+      <div class="actions">
+        <a class="btn whatsapp" href="#agendamento">Agendar pelo WhatsApp</a>
+        <a class="btn secondary" href="#procedimentos">Ver procedimentos</a>
+      </div>
+    </div>
 
-<section id="valores"><div class="title"><small>VALORES</small><h2>Procedimentos avulsos</h2></div><div class="services"><div class="card"><h3>Unhas</h3><ul class="service-list"><li>Manicure e pedicure <b class="price">R$ 50</b></li><li>Alongamento <b class="price">R$ 120</b></li><li>Manutenção <b class="price">R$ 90</b></li><li>Esmaltação em gel <b class="price">R$ 60</b></li><li>Banho em gel <b class="price">R$ 80</b></li><li>Blindagem <b class="price">R$ 60</b></li></ul></div><div class="card"><h3>Sobrancelhas e estética</h3><ul class="service-list"><li>Sobrancelha <b class="price">R$ 40</b></li><li>Design com henna <b class="price">R$ 55</b></li><li>Limpeza de pele <b class="price">R$ 120</b></li></ul></div><div class="card"><h3>Cabelos</h3><ul class="service-list"><li>Escova curta <b class="price">R$ 60</b></li><li>Escova média <b class="price">R$ 70</b></li><li>Escova longa <b class="price">R$ 90</b></li><li>Progressiva a partir de <b class="price">R$ 180</b></li><li>Coloração com produto da cliente <b class="price">R$ 60</b></li><li>Coloração com produto do salão <b class="price">R$ 120</b></li><li>Tranças a partir de <b class="price">R$ 60</b></li><li>Pingentes/decoração na trança <b class="price">R$ 16</b></li></ul></div><div class="card"><h3>Combos</h3><p>As promoções e combos continuam disponíveis separadamente, com os valores promocionais informados pelo salão.</p></div></div></section>
+    <div class="hero-card">
+      <div>
+        <div class="symbol">
+          <span class="db-flower">DB</span>
+        </div>
+        <h2>Beleza, cuidado e elegância</h2>
+        <p>Agende de onde estiver: Android, iPhone, tablet ou computador.</p>
+      </div>
+    </div>
+  </section>
 
-<section id="nossa equipe "><div class="title"><small>NOSSA EQUIPE</small><h2>Escolha quem vai atender você</h2></div><div class="grid professionals"><div class="card"><div class="avatar">L</div><h3>Luana</h3><p class="professional-services">Progressiva • Mechas • Escova • Babyliss</p></div><div class="card"><div class="avatar">C</div><h3>Cleo</h3><p class="professional-services">Sobrancelha • Depilação • Limpeza de pele</p></div><div class="card"><div class="avatar">AJ</div><h3>Ana Júlia</h3><p class="professional-services">Escova • Tranças • Finalização</p></div><div class="card"><div class="avatar">AC</div><h3>Ana Clara</h3><p class="professional-services">Alongamento • Manicure • Pedicure</p></div></div></section>
+  <section id="combos">
+    <div class="title">
+      <div class="eyebrow">Ofertas especiais</div>
+      <h2>Combos Dona Beleza</h2>
+      <p>Opções especiais para você cuidar da beleza em um só atendimento.</p>
+    </div>
 
-<section><div class="info"><div><h3>📍 ENDEREÇO</h3><p>R. Osório de Morais, esquina com Av. Rio Vermelho<br>Goiânia - GO, 74355-533</p></div><div><h3>🕒 HORÁRIO</h3><p>Segunda a sábado<br>09:00 às 19:00<br>Domingo fechado</p></div><div><h3>✉️ E-MAIL</h3><p><a href="mailto:dona.beleza.beauty@gmail.com">dona.beleza.beauty@gmail.com</a></p></div></div></section>
+    <div class="cards">
+      <article class="card combo-card">
+        <h3>Escova + Ozonioterapia + Reconstrução Day by Day</h3>
+        <div class="validity">Válido somente esta semana</div>
+        <div class="price">R$ 99,90</div>
+      </article>
 
-<section id="agendamento"><div class="title"><small>AGENDE PELO CELULAR OU COMPUTADOR</small><h2>Seu agendamento</h2></div><div class="booking"><form id="bookingForm"><div class="form"><div class="field"><label>Nome da cliente</label><input id="client" required placeholder="Seu nome"></div><div class="field"><label>WhatsApp</label><input id="phone" required placeholder="(62) 99999-9999"></div><div class="field"><label>Serviço</label><input value="A profissional será definida pelo salão" disabled></div><div class="field"><label>Data</label><input id="date" type="date" required></div><div class="field"><label>Horário</label><input id="time" type="time" min="09:00" max="19:00" step="1800" required></div><div class="field full"><label>Procedimentos — você pode marcar mais de um</label><div id="procedurePicker" class="procedure-picker"></div><div class="note">O sistema soma a duração dos procedimentos e verifica conflitos para a profissional escolhida.</div></div></div><button class="btn primary" type="submit">Confirmar agendamento</button><div id="status" class="status"></div></form></div></section>
+      <article class="card combo-card">
+        <h3>Pé e mão</h3>
+        <div class="validity">Válido somente esta semana</div>
+        <div class="price">R$ 50,00</div>
+      </article>
 
-<section id="salao" class="admin"><div class="title"><small>USO DO SALÃO</small><h2>Área do salão</h2><p>Controle de clientes, profissionais e horários.</p></div><div class="admin-login card"><div class="field"><label>Senha do salão</label><input id="adminPass" type="password" placeholder="Digite a senha"></div><button class="btn primary" onclick="loginAdmin()">Entrar no painel</button><div id="adminMsg" class="note"></div></div><div id="adminPanel" class="admin-panel"><div class="admin-actions"><button class="btn secondary" onclick="exportBookings()">Exportar agendamentos</button><button class="btn danger" onclick="clearBookings()">Apagar dados deste aparelho</button></div><div class="table-wrap"><table class="table"><thead><tr><th>Cliente</th><th>WhatsApp</th><th>Profissional</th><th>Data</th><th>Horário</th><th>Procedimentos</th><th>Duração</th></tr></thead><tbody id="bookingTable"></tbody></table></div></div></section>
+      <article class="card combo-card">
+        <h3>Escova + mão ou pé + design de sobrancelha</h3>
+        <div class="validity">Válido somente esta semana</div>
+        <div class="price">R$ 79,90</div>
+      </article>
+
+      <article class="card combo-card">
+        <h3>Detox + escova + pé ou mão</h3>
+        <div class="validity">Válido somente esta semana</div>
+        <div class="price">R$ 129,90</div>
+      </article>
+
+      <article class="card combo-card">
+        <h3>Depilação cava funda + design + aplicação de rena</h3>
+        <div class="validity">Válido somente esta semana</div>
+        <div class="price">R$ 109,90</div>
+      </article>
+
+      <article class="card combo-card">
+        <h3>Escova + pé ou mão</h3>
+        <div class="validity">Válido somente esta semana</div>
+        <div class="price">R$ 75,90</div>
+      </article>
+
+      <article class="card combo-card">
+        <h3>Escova + sobrancelha + buço</h3>
+        <div class="validity">Válido somente esta semana</div>
+        <div class="price">R$ 79,90</div>
+      </article>
+
+      <article class="card combo-card">
+        <h3>Progressiva + sobrancelha</h3>
+        <div class="validity">Válido somente esta semana</div>
+        <div class="price">R$ 179,90</div>
+      </article>
+
+      <article class="card combo-card">
+        <h3>Progressiva + pé</h3>
+        <div class="validity">Válido somente esta semana</div>
+        <div class="price">R$ 149,90</div>
+      </article>
+
+      <article class="card combo-card">
+        <h3>Limpeza de pele + sobrancelha + buço</h3>
+        <div class="validity">Válido somente esta semana</div>
+        <div class="price">R$ 149,90</div>
+      </article>
+
+      <article class="card combo-card">
+        <h3>Lavada premium + pé e mão + design de sobrancelha</h3>
+        <div class="validity">Válido somente esta semana</div>
+        <div class="price">R$ 139,90</div>
+      </article>
+
+      <article class="card combo-card">
+        <h3>Design de sobrancelha + pé e mão</h3>
+        <div class="validity">Válido somente esta semana</div>
+        <div class="price">R$ 79,90</div>
+      </article>
+
+      <article class="card combo-card">
+        <h3>Depilação completa + design de sobrancelha</h3>
+        <div class="validity">Válido somente esta semana</div>
+        <div class="price">R$ 129,90</div>
+      </article>
+
+      <article class="card combo-card">
+        <h3>Limpeza de pele + design de sobrancelha</h3>
+        <div class="validity">Válido somente esta semana</div>
+        <div class="price">R$ 119,90</div>
+      </article>
+    </div>
+  </section>
+
+  <section id="procedimentos">
+    <div class="title">
+      <div class="eyebrow">Serviços individuais</div>
+      <h2>Procedimentos avulsos</h2>
+      <p>Escolha somente o serviço que deseja realizar.</p>
+    </div>
+
+    <p class="section-note">
+      Os valores abaixo são os valores avulsos já definidos para o salão.
+      Para outros procedimentos, consulte o atendimento pelo WhatsApp.
+    </p>
+
+    <div class="cards">
+      <article class="card">
+        <h3>Progressiva</h3>
+        <p>Alinhamento e tratamento dos fios.</p>
+        <span class="duration">Duração aproximada: 180 min</span>
+        <div class="price">A partir de R$ 180,00</div>
+      </article>
+
+      <article class="card">
+        <h3>Escova</h3>
+        <p>Finalização e modelagem dos cabelos.</p>
+        <span class="duration">Duração aproximada: 40 min</span>
+        <div class="price">R$ 60,00</div>
+      </article>
+
+      <article class="card">
+        <h3>Nutrição</h3>
+        <p>Tratamento para os fios.</p>
+        <div class="price">R$ 80,00</div>
+      </article>
+
+      <article class="card">
+        <h3>Coloração — aplicação</h3>
+        <p>Aplicação de coloração.</p>
+        <div class="price">R$ 60,00</div>
+      </article>
+
+      <article class="card">
+        <h3>Pé e mão</h3>
+        <p>Cuidados completos para mãos e pés.</p>
+        <span class="duration">Duração aproximada: 90 min</span>
+        <div class="price">R$ 50,00</div>
+      </article>
+
+      <article class="card">
+        <h3>Design de sobrancelha</h3>
+        <p>Design para valorizar o olhar.</p>
+        <div class="price">R$ 40,00</div>
+      </article>
+
+      <article class="card">
+        <h3>Buço</h3>
+        <p>Depilação facial.</p>
+        <div class="price">R$ 15,00</div>
+      </article>
+
+      <article class="card">
+        <h3>Depilação completa</h3>
+        <p>Depilação completa com cera.</p>
+        <div class="price">R$ 110,00</div>
+      </article>
+
+      <article class="card">
+        <h3>Depilação cava funda</h3>
+        <p>Depilação com cera na região de cava funda.</p>
+        <div class="price">R$ 80,00</div>
+      </article>
+
+      <article class="card">
+        <h3>Outros procedimentos</h3>
+        <p>Consulte serviços e valores pelo WhatsApp do salão.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="agendamento">
+    <div class="title">
+      <div class="eyebrow">Agendamento</div>
+      <h2>Agende seu horário</h2>
+      <p>Você não escolhe a profissional. O salão organiza o atendimento.</p>
+    </div>
+
+    <form class="booking" id="bookingForm">
+      <div class="form-grid">
+        <div class="field">
+          <label for="client">Seu nome</label>
+          <input id="client" type="text" placeholder="Digite seu nome" required>
+        </div>
+
+        <div class="field">
+          <label for="phone">Seu telefone</label>
+          <input id="phone" type="tel" placeholder="(62) 99999-9999" required>
+        </div>
+
+        <div class="field full">
+          <label for="procedure">Procedimento</label>
+          <select id="procedure" required>
+            <option value="">Selecione o procedimento ou combo</option>
+
+            <optgroup label="Combos">
+              <option>Escova + Ozonioterapia + Reconstrução Day by Day — R$ 99,90</option>
+              <option>Pé e mão — R$ 50,00</option>
+              <option>Escova + mão ou pé + design de sobrancelha — R$ 79,90</option>
+              <option>Detox + escova + pé ou mão — R$ 129,90</option>
+              <option>Depilação cava funda + design + aplicação de rena — R$ 109,90</option>
+              <option>Escova + pé ou mão — R$ 75,90</option>
+              <option>Escova + sobrancelha + buço — R$ 79,90</option>
+              <option>Progressiva + sobrancelha — R$ 179,90</option>
+              <option>Progressiva + pé — R$ 149,90</option>
+              <option>Limpeza de pele + sobrancelha + buço — R$ 149,90</option>
+              <option>Lavada premium + pé e mão + design de sobrancelha — R$ 139,90</option>
+              <option>Design de sobrancelha + pé e mão — R$ 79,90</option>
+              <option>Depilação completa + design de sobrancelha — R$ 129,90</option>
+              <option>Limpeza de pele + design de sobrancelha — R$ 119,90</option>
+            </optgroup>
+
+            <optgroup label="Avulsos">
+              <option>Nutrição — R$ 80,00</option>
+              <option>Escova — R$ 60,00</option>
+              <option>Coloração — aplicação — R$ 60,00</option>
+              <option>Progressiva — a partir de R$ 180,00</option>
+              <option>Pé e mão — R$ 50,00</option>
+              <option>Design de sobrancelha — R$ 40,00</option>
+              <option>Buço — R$ 15,00</option>
+              <option>Depilação completa — R$ 110,00</option>
+              <option>Depilação cava funda — R$ 80,00</option>
+              <option>Outro procedimento</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="date">Data desejada</label>
+          <input id="date" type="date" required>
+        </div>
+
+        <div class="field">
+          <label for="time">Horário desejado</label>
+          <input id="time" type="time" min="09:00" max="19:00" required>
+        </div>
+
+        <div class="field full">
+          <label for="message">Observação (opcional)</label>
+          <textarea id="message" placeholder="Ex.: gostaria de agendar para duas pessoas..."></textarea>
+        </div>
+      </div>
+
+      <div class="notice">
+        <strong>Importante</strong>
+        Este formulário não salva seus dados nem cria um cadastro no site.
+        Ao clicar em “Enviar pelo WhatsApp”, a mensagem é aberta no WhatsApp
+        do salão para o atendimento confirmar o horário.
+      </div>
+
+      <button class="btn whatsapp" type="submit" style="width:100%">
+        Enviar agendamento pelo WhatsApp
+      </button>
+
+      <div id="status" class="status"></div>
+    </form>
+  </section>
+
+  <section id="contato">
+    <div class="title">
+      <div class="eyebrow">Fale conosco</div>
+      <h2>Contato e localização</h2>
+    </div>
+
+    <div class="contact">
+      <div class="card">
+        <h3>WhatsApp</h3>
+        <p>Fale diretamente com o salão.</p>
+        <br>
+        <a href="https://wa.me/5562996344257" target="_blank" rel="noopener">
+          (62) 99634-4257
+        </a>
+      </div>
+
+      <div class="card">
+        <h3>Endereço</h3>
+        <p>R. Osório de Morais, esquina com Av. Rio Vermelho</p>
+        <p>Goiânia – GO, 74355-533</p>
+      </div>
+    </div>
+  </section>
 </main>
-<footer class="footer"><strong>DONA BELEZA</strong><p>Salão & Estética • Goiânia - GO • dona.beleza.beauty@gmail.com</p></footer>
-<nav class="bottom"><a href="#inicio">⌂<br>Home</a><a href="#procedimentos">✂<br>Procedimentos</a><a href="#profissionais">♙<br>Profissionais</a><a href="#agendamento">□<br>Agendar</a><a href="#salao">⚙<br>Salão</
-</body><script>
-const DATA={
-  'Progressiva':180,
-  'Mechas':180,
-  'Escova':40,
-  'Babyliss':60,
-  'Sobrancelha':30,
-  'Design com henna':45,
-  'Depilação':45,
-  'Limpeza de pele':60,
-  'Tranças':90,
-  'Finalização':60,
-  'Alongamento':120,
-  'Manicure':45,
-  'Pedicure':45
-};
 
-const bookings=()=>JSON.parse(
-  localStorage.getItem('donaBelezaBookings')||'[]'
-);
+<div class="bottom">
+  <a class="btn secondary" href="#inicio">Início</a>
+  <a class="btn whatsapp" href="#agendamento">Agendar</a>
+</div>
 
-const saveBookings=b=>
-  localStorage.setItem(
-    'donaBelezaBookings',
-    JSON.stringify(b)
-  );
+<footer>
+  <strong>DONA BELEZA | SALÃO & ESTÉTICA</strong>
+  <p>Goiânia – Goiás</p>
+  <p>© 2026 Dona Beleza. Todos os direitos reservados.</p>
+</footer>
 
-function renderProcedures(){
-  const box=document.getElementById('procedurePicker');
-  if(!box)return;
-
-  box.innerHTML='';
-
-  Object.keys(DATA).forEach(name=>{
-    const label=document.createElement('label');
-    label.className='check';
-
-    label.innerHTML=
-      `<input type="checkbox" value="${name}">
-       ${name}
-       <b class="price">${DATA[name]} min</b>`;
-
-    box.appendChild(label);
-  });
-}
-
-function overlap(aStart,aEnd,bStart,bEnd){
-  return aStart<bEnd && bStart<aEnd;
-}
-
-function submitBooking(e){
-  e.preventDefault();
-
-  const client=
-    document.getElementById('client').value.trim();
-
-  const phone=
-    document.getElementById('phone').value.trim();
-
-  const date=
-    document.getElementById('date').value;
-
-  const time=
-    document.getElementById('time').value;
-
-  const checks=[
-    ...document.querySelectorAll(
-      '#procedurePicker input:checked'
-    )
-  ];
-
-  const status=
-    document.getElementById('status');
-
-  if(!checks.length){
-    status.className='status error';
-    status.textContent=
-      'Escolha pelo menos um procedimento.';
-    return;
-  }
-
-  const duration=checks.reduce(
-    (total,item)=>
-      total + DATA[item.value],
-    0
-  );
-
-  const [h,m]=time.split(':').map(Number);
-
-  const start=h*60+m;
-  const end=start+duration;
-
-  if(start<540 || end>1140){
-    status.className='status error';
-    status.textContent=
-      'Esse horário ultrapassa o funcionamento do salão (09:00 às 19:00).';
-    return;
-  }
-
+<script>
   /*
     IMPORTANTE:
-    A cliente não escolhe profissional.
-    O conflito é verificado para o salão inteiro.
+    Esta versão NÃO usa banco de dados, localStorage ou cadastro.
+    O agendamento é apenas montado e enviado para o WhatsApp do salão.
   */
 
-  const exists=bookings();
+  const form = document.getElementById('bookingForm');
+  const status = document.getElementById('status');
+  const dateInput = document.getElementById('date');
 
-  const conflict=exists.some(b=>
-    b.date===date &&
-    overlap(
-      start,
-      end,
-      b.start,
-      b.end
-    )
-  );
+  // Impede escolher uma data anterior à de hoje.
+  const hoje = new Date();
+  const yyyy = hoje.getFullYear();
+  const mm = String(hoje.getMonth() + 1).padStart(2, '0');
+  const dd = String(hoje.getDate()).padStart(2, '0');
 
-  if(conflict){
-    status.className='status error';
-    status.textContent=
-      'Esse horário já está ocupado. Escolha outro horário.';
-    return;
-  }
+  dateInput.min = `${yyyy}-${mm}-${dd}`;
 
-  exists.push({
-    id:Date.now(),
-    client,
-    phone,
-    professional:'Definida pelo salão',
-    date,
-    time,
-    procedures:checks.map(
-      item=>item.value
-    ),
-    duration,
-    start,
-    end
-  });
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
 
-  saveBookings(exists);
+    const client = document.getElementById('client').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const procedure = document.getElementById('procedure').value;
+    const date = document.getElementById('date').value;
+    const time = document.getElementById('time').value;
+    const message = document.getElementById('message').value.trim();
 
-  status.className='status ok';
-
-  status.textContent=
-    `Agendamento confirmado para ${date} às ${time}. `+
-    `Duração: ${duration} minutos.`;
-
-  e.target.reset();
-
-  document.getElementById(
-    'procedurePicker'
-  ).innerHTML='';
-
-  renderProcedures();
-  renderAdmin();
-}
-
-document
-  .getElementById('bookingForm')
-  .addEventListener(
-    'submit',
-    submitBooking
-  );
-
-function loginAdmin(){
-  const pass=
-    document.getElementById('adminPass').value;
-
-  const msg=
-    document.getElementById('adminMsg');
-
-  if(pass==='DonaBeleza'){
-    document
-      .getElementById('adminPanel')
-      .classList.add('active');
-
-    msg.textContent=
-      'Painel aberto neste aparelho.';
-
-    renderAdmin();
-  }else{
-    msg.textContent=
-      'Senha incorreta.';
-  }
-}
-
-function renderAdmin(){
-  const body=
-    document.getElementById('bookingTable');
-
-  if(!body)return;
-
-  const arr=bookings().sort(
-    (a,b)=>
-      (a.date+a.time)
-      .localeCompare(
-        b.date+b.time
-      )
-  );
-
-  body.innerHTML=arr.length
-    ?arr.map(b=>`
-      <tr>
-        <td>${escapeHtml(b.client)}</td>
-        <td>${escapeHtml(b.phone)}</td>
-        <td>Definida pelo salão</td>
-        <td>${b.date}</td>
-        <td>${b.time}</td>
-        <td>${b.procedures.join(', ')}</td>
-        <td>${b.duration} min</td>
-      </tr>
-    `).join('')
-    :`
-      <tr>
-        <td colspan="7">
-          Nenhum agendamento salvo neste aparelho.
-        </td>
-      </tr>
-    `;
-}
-
-function escapeHtml(s){
-  return String(s).replace(
-    /[&<>'"]/g,
-    c=>({
-      '&':'&amp;',
-      '<':'&lt;',
-      '>':'&gt;',
-      "'":'&#39;',
-      '"':'&quot;'
-    }[c])
-  );
-}
-
-function exportBookings(){
-  const blob=new Blob(
-    [
-      JSON.stringify(
-        bookings(),
-        null,
-        2
-      )
-    ],
-    {
-      type:'application/json'
+    if(!client || !phone || !procedure || !date || !time){
+      status.className = 'status error';
+      status.textContent =
+        'Preencha seu nome, telefone, procedimento, data e horário.';
+      return;
     }
-  );
 
-  const a=
-    document.createElement('a');
+    const [y,m,d] = date.split('-');
+    const dataFormatada = `${d}/${m}/${y}`;
 
-  a.href=
-    URL.createObjectURL(blob);
+    const texto =
+`Olá, Dona Beleza! Gostaria de solicitar um agendamento.
 
-  a.download=
-    'agendamentos-dona-beleza.json';
+Nome: ${client}
+Telefone: ${phone}
+Procedimento: ${procedure}
+Data desejada: ${dataFormatada}
+Horário desejado: ${time}
+${message ? `Observação: ${message}` : ''}
 
-  a.click();
+Aguardo a confirmação do salão.`;
 
-  URL.revokeObjectURL(a.href);
-}
+    const url =
+      'https://wa.me/5562996344257?text=' +
+      encodeURIComponent(texto);
 
-function clearBookings(){
-  if(
-    confirm(
-      'Apagar os agendamentos salvos neste aparelho?'
-    )
-  ){
-    localStorage.removeItem(
-      'donaBelezaBookings'
-    );
+    status.className = 'status ok';
+    status.textContent =
+      'Abrindo o WhatsApp para enviar sua solicitação...';
 
-    renderAdmin();
-  }
-}
-
-renderProcedures();
+    window.open(url, '_blank', 'noopener');
+  });
 </script>
+
+</body>
+</html></body>
 </html>
