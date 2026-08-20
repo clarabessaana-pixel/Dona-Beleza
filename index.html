@@ -1,765 +1,1415 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#b88978">
-  <meta name="description" content="Dona Beleza - Salão & Estética. Agende seu horário pelo celular ou computador.">
-  <title>Dona Beleza | Salão & Estética</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#4a2f25">
+<title>Dona Beleza - Gestão</title>
 
-  <style>
-    :root{
-      --bg:#f8f2eb;
-      --card:#fffdf9;
-      --primary:#8b5e4b;
-      --primary-dark:#5e3d31;
-      --text:#2f241f;
-      --muted:#75645c;
-      --line:#e4d5c9;
-      --soft:#efe2d7;
-      --beige:#d8bda8;
-      --cream:#f4eadf;
-    }
+<style>
+*{
+  box-sizing:border-box;
+}
 
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:Arial,Helvetica,sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.5;
-    }
-    a{text-decoration:none;color:inherit}
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f7eee7;
+  color:#38261f;
+}
 
-    header{
-      position:sticky;
-      top:0;
-      z-index:20;
-      background:rgba(250,247,243,.96);
-      backdrop-filter:blur(10px);
-      border-bottom:1px solid var(--line);
-    }
-    .nav{
-      max-width:1100px;
-      margin:auto;
-      min-height:70px;
-      padding:12px 20px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
-    }
-    .brand strong{display:block;font-size:21px}
-    .brand span{font-size:12px;color:var(--muted);letter-spacing:1.5px}
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:11px;
-      min-width:max-content;
-    }
-    .logo-mark{
-      width:48px;
-      height:48px;
-      border:1.5px solid var(--primary);
-      border-radius:50%;
-      display:grid;
-      place-items:center;
-      position:relative;
-      background:linear-gradient(145deg,#fffaf4,#ead8c8);
-      box-shadow:0 5px 15px rgba(78,49,37,.10);
-    }
-    .logo-mark:before,.logo-mark:after{
-      content:"";
-      position:absolute;
-      width:7px;
-      height:7px;
-      border-radius:50%;
-      background:var(--beige);
-      top:5px;
-    }
-    .logo-mark:before{left:8px}
-    .logo-mark:after{right:8px}
-    .logo-mark span{
-      color:var(--primary-dark);
-      font-family:Georgia,"Times New Roman",serif;
-      font-size:17px;
-      font-weight:700;
-      letter-spacing:-1px;
-    }
-    .logo-copy{
-      display:flex;
-      flex-direction:column;
-      line-height:1.05;
-    }
-    .logo-copy strong{
-      font-family:Georgia,"Times New Roman",serif;
-      font-size:18px;
-      letter-spacing:1.4px;
-      color:var(--primary-dark);
-    }
-    .logo-copy small{
-      margin-top:5px;
-      font-size:9px;
-      letter-spacing:2.1px;
-      color:var(--muted);
-    }
+.app{
+  min-height:100vh;
+  background:linear-gradient(
+    #3f271f 0 220px,
+    #f7eee7 220px
+  );
+}
 
-    .links{display:flex;gap:18px;font-size:14px}
-    .links a:hover{color:var(--primary-dark)}
+.top{
+  padding:35px 20px 25px;
+  color:white;
+}
 
-    main{padding-bottom:30px}
-    section{max-width:1100px;margin:auto;padding:70px 20px}
+.container{
+  width:100%;
+  max-width:900px;
+  margin:auto;
+  padding:0 16px 30px;
+}
 
-    .hero{
-      min-height:520px;
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
-      align-items:center;
-      gap:45px;
-    }
-    .eyebrow{
-      color:var(--primary-dark);
-      font-size:13px;
-      font-weight:bold;
-      letter-spacing:2px;
-      text-transform:uppercase;
-    }
-    h1{font-size:clamp(38px,6vw,64px);line-height:1.05;margin:12px 0 18px}
-    h2{font-size:32px;margin:0 0 10px}
-    .lead{font-size:18px;color:var(--muted);max-width:650px}
-    .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:48px;
-      padding:0 20px;
-      border-radius:12px;
-      border:1px solid var(--primary);
-      background:var(--primary);
-      color:white;
-      font-weight:bold;
-      cursor:pointer;
-    }
-    .btn.secondary{background:white;color:var(--primary-dark)}
-    .btn.whatsapp{background:var(--primary);border-color:var(--primary)}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
 
-    .hero-card{
-      min-height:330px;
-      border-radius:28px;
-      background:linear-gradient(145deg,#e8d5c4,#f7eee8);
-      border:1px solid var(--line);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding:35px;
-      box-shadow:0 18px 45px rgba(80,50,40,.10);
-    }
-    .hero-card div{max-width:350px}
-    .hero-card .symbol{
-      width:96px;
-      height:96px;
-      margin:0 auto 18px;
-      border-radius:50%;
-      border:1px solid rgba(139,94,75,.45);
-      background:rgba(255,253,249,.55);
-      display:grid;
-      place-items:center;
-      box-shadow:0 10px 25px rgba(78,49,37,.08);
-    }
-    .db-flower{
-      color:var(--primary-dark);
-      font-family:Georgia,"Times New Roman",serif;
-      font-size:31px;
-      font-weight:700;
-      letter-spacing:-2px;
-      position:relative;
-    }
-    .db-flower:before,
-    .db-flower:after{
-      content:"";
-      position:absolute;
-      width:10px;
-      height:10px;
-      border-radius:50%;
-      border:1px solid var(--beige);
-      top:2px;
-    }
-    .db-flower:before{left:-18px}
-    .db-flower:after{right:-18px}
+.logo{
+  width:50px;
+  height:50px;
+  border-radius:15px;
+  background:#d8b79f;
+  color:#4a2f25;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  font-size:20px;
+}
 
-    .title{text-align:center;margin-bottom:35px}
-    .title p{color:var(--muted);margin-top:6px}
+.brand h1{
+  margin:0;
+  font-family:Georgia,serif;
+  font-weight:normal;
+}
 
-    .cards{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:18px;
-    }
-    .card{
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:18px;
-      padding:22px;
-      box-shadow:0 8px 25px rgba(80,50,40,.05);
-    }
-    .card h3{margin:0 0 7px}
-    .card p{margin:0;color:var(--muted)}
-    .duration{display:inline-block;margin-top:12px;color:var(--primary-dark);font-weight:bold;font-size:13px}
+.brand small{
+  opacity:.75;
+}
 
-    .booking{
-      max-width:800px;
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:24px;
-      padding:28px;
-      box-shadow:0 15px 40px rgba(80,50,40,.07);
-    }
-    .form-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:16px;
-    }
-    .field{display:flex;flex-direction:column;gap:7px}
-    .field.full{grid-column:1/-1}
-    label{font-weight:bold;font-size:14px}
-    input,select,textarea{
-      width:100%;
-      border:1px solid #d9cbc4;
-      border-radius:12px;
-      padding:13px 14px;
-      background:white;
-      color:var(--text);
-      font:inherit;
-      outline:none;
-    }
-    input:focus,select:focus,textarea:focus{border-color:var(--primary)}
-    textarea{min-height:90px;resize:vertical}
+.page{
+  display:none;
+}
 
-    .notice{
-      margin:18px 0;
-      padding:13px 15px;
-      background:var(--soft);
-      border-radius:12px;
-      color:#5d4d47;
-      font-size:14px;
-    }
-    .notice strong{display:block;margin-bottom:2px}
+.page.active{
+  display:block;
+}
 
-    .status{
-      margin-top:14px;
-      padding:12px;
-      border-radius:10px;
-      display:none;
-      font-size:14px;
-    }
-    .status.error{display:block;background:#fff0f0;color:#a33}
-    .status.ok{display:block;background:#edf9f0;color:#236b35}
+.card{
+  background:#fffaf6;
+  border:1px solid #dfcfc3;
+  border-radius:22px;
+  padding:18px;
+  margin-bottom:14px;
+  box-shadow:0 5px 18px rgba(50,30,20,.08);
+}
 
-    .validity{
-      display:inline-block;
-      margin-top:12px;
-      padding:5px 9px;
-      border-radius:999px;
-      background:var(--soft);
-      color:var(--primary-dark);
-      font-size:11px;
-      font-weight:800;
-      letter-spacing:.4px;
-      text-transform:uppercase;
-    }
-    .price{
-      margin-top:14px;
-      font-size:22px;
-      font-weight:800;
-      color:var(--primary-dark);
-    }
-    .price small{
-      font-size:12px;
-      font-weight:600;
-      color:var(--muted);
-    }
-    .combo-card{
-      position:relative;
-      overflow:hidden;
-    }
-    .combo-card:before{
-      content:"COMBO";
-      position:absolute;
-      top:13px;
-      right:-31px;
-      transform:rotate(35deg);
-      background:var(--primary);
-      color:#fff;
-      font-size:8px;
-      letter-spacing:1.5px;
-      padding:5px 34px;
-    }
-    .section-note{
-      max-width:700px;
-      margin:0 auto 28px;
-      text-align:center;
-      color:var(--muted);
-      font-size:14px;
-    }
+.hero h2{
+  margin:0 0 5px;
+  font-family:Georgia,serif;
+  font-weight:normal;
+}
 
-    .contact{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:18px;
-    }
-    .contact .card a{color:var(--primary-dark);font-weight:bold}
+.muted{
+  color:#806d63;
+  font-size:14px;
+}
 
-    footer{
-      background:#332a27;
-      color:#fff;
-      text-align:center;
-      padding:35px 20px;
-    }
-    footer p{margin:5px 0;color:#ddd}
+.kpis{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:16px;
+}
 
-    .bottom{
-      display:none;
-    }
+.kpi{
+  background:#f7eee7;
+  border:1px solid #dfcfc3;
+  border-radius:15px;
+  padding:13px;
+}
 
-    @media(max-width:800px){
-      .links{display:none}
-      .hero{grid-template-columns:1fr;min-height:auto;padding-top:50px}
-      .hero-card{min-height:250px}
-      .cards{grid-template-columns:1fr 1fr}
-      .contact{grid-template-columns:1fr}
-    }
+.kpi span{
+  display:block;
+  color:#806d63;
+  font-size:12px;
+}
 
-    @media(max-width:560px){
-      section{padding:50px 15px}
-      .cards{grid-template-columns:1fr}
-      .form-grid{grid-template-columns:1fr}
-      .field.full{grid-column:auto}
-      .booking{padding:20px}
-      .bottom{
-        position:fixed;
-        bottom:0;left:0;right:0;
-        z-index:30;
-        display:grid;
-        grid-template-columns:1fr 1fr;
-        gap:8px;
-        padding:10px;
-        background:rgba(255,255,255,.96);
-        border-top:1px solid var(--line);
-      }
-      .bottom .btn{min-height:44px;padding:0 10px}
-      footer{padding-bottom:90px}
-    }
-  </style>
+.kpi strong{
+  display:block;
+  margin-top:5px;
+  font-size:18px;
+}
+
+.menu{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:11px;
+}
+
+.menu button{
+  border:1px solid #dfcfc3;
+  background:#fffaf6;
+  border-radius:18px;
+  padding:16px;
+  min-height:90px;
+  text-align:left;
+  font-size:15px;
+  font-weight:bold;
+  color:#38261f;
+}
+
+.icon{
+  display:block;
+  width:36px;
+  height:36px;
+  background:#ead8ca;
+  border-radius:11px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:9px;
+  font-size:19px;
+}
+
+.back{
+  border:0;
+  background:none;
+  color:#6a4535;
+  font-weight:bold;
+  font-size:15px;
+  padding:0 0 15px;
+}
+
+h2{
+  font-family:Georgia,serif;
+  font-weight:normal;
+  margin:0 0 8px;
+}
+
+form{
+  display:grid;
+  gap:9px;
+}
+
+label{
+  color:#806d63;
+  font-size:12px;
+  font-weight:bold;
+}
+
+input,select{
+  width:100%;
+  padding:13px;
+  border:1px solid #dfcfc3;
+  border-radius:12px;
+  background:white;
+  font-size:16px;
+  color:#38261f;
+}
+
+.row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px;
+}
+
+.primary{
+  border:0;
+  background:#6a4535;
+  color:white;
+  border-radius:12px;
+  padding:14px;
+  font-size:15px;
+  font-weight:bold;
+}
+
+.list{
+  display:grid;
+  gap:9px;
+  margin-top:15px;
+}
+
+.item{
+  background:white;
+  border:1px solid #dfcfc3;
+  border-radius:14px;
+  padding:13px;
+}
+
+.item b{
+  display:block;
+}
+
+.item span{
+  display:block;
+  margin-top:5px;
+  color:#806d63;
+  font-size:13px;
+}
+
+.badge{
+  display:inline-block;
+  background:#ead8ca;
+  color:#6a4535;
+  border-radius:20px;
+  padding:5px 8px;
+  font-size:11px;
+  font-weight:bold;
+}
+
+.empty{
+  text-align:center;
+  padding:20px;
+  border:1px dashed #dfcfc3;
+  border-radius:14px;
+  color:#806d63;
+}
+
+.footer{
+  text-align:center;
+  color:#9b897f;
+  font-size:11px;
+  padding:20px;
+}
+
+@media(min-width:700px){
+  .menu{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .kpis{
+    grid-template-columns:repeat(4,1fr);
+  }
+}
+</style>
 </head>
 
 <body>
-<header>
-  <nav class="nav">
-    <a class="brand" href="#inicio" aria-label="Dona Beleza - início">
-      <span class="logo-mark" aria-hidden="true">
-        <span>DB</span>
-      </span>
-      <span class="logo-copy">
-        <strong>DONA BELEZA</strong>
-        <small>SALÃO & ESTÉTICA</small>
-      </span>
-    </a>
-    <div class="links">
-      <a href="#combos">Combos</a>
-      <a href="#procedimentos">Avulsos</a>
-      <a href="#agendamento">Agendamento</a>
-      <a href="#contato">Contato</a>
-    </div>
-    <a class="btn" href="#agendamento">Agendar</a>
-  </nav>
-</header>
 
-<main>
-  <section id="inicio" class="hero">
-    <div>
-      <div class="eyebrow">Dona Beleza</div>
-      <h1>Seu momento de beleza começa aqui.</h1>
-      <p class="lead">
-        Escolha o procedimento, informe seus dados e envie sua solicitação
-        diretamente pelo WhatsApp do salão.
-      </p>
-      <div class="actions">
-        <a class="btn whatsapp" href="#agendamento">Agendar pelo WhatsApp</a>
-        <a class="btn secondary" href="#procedimentos">Ver procedimentos</a>
-      </div>
-    </div>
+<div class="app">
 
-    <div class="hero-card">
-      <div>
-        <div class="symbol">
-          <span class="db-flower">DB</span>
-        </div>
-        <h2>Beleza, cuidado e elegância</h2>
-        <p>Agende de onde estiver: Android, iPhone, tablet ou computador.</p>
-      </div>
-    </div>
-  </section>
+<header class="top">
+<div class="container">
 
-  <section id="combos">
-    <div class="title">
-      <div class="eyebrow">Ofertas especiais</div>
-      <h2>Combos Dona Beleza</h2>
-      <p>Opções especiais para você cuidar da beleza em um só atendimento.</p>
-    </div>
+<div class="brand">
+<div class="logo">DB</div>
 
-    <div class="cards">
-      <article class="card combo-card">
-        <h3>Escova + Ozonioterapia + Reconstrução Day by Day</h3>
-        <div class="validity">Válido somente esta semana</div>
-        <div class="price">R$ 99,90</div>
-      </article>
-
-      <article class="card combo-card">
-        <h3>Pé e mão</h3>
-        <div class="validity">Válido somente esta semana</div>
-        <div class="price">R$ 50,00</div>
-      </article>
-
-      <article class="card combo-card">
-        <h3>Escova + mão ou pé + design de sobrancelha</h3>
-        <div class="validity">Válido somente esta semana</div>
-        <div class="price">R$ 79,90</div>
-      </article>
-
-      <article class="card combo-card">
-        <h3>Detox + escova + pé ou mão</h3>
-        <div class="validity">Válido somente esta semana</div>
-        <div class="price">R$ 129,90</div>
-      </article>
-
-      <article class="card combo-card">
-        <h3>Depilação cava funda + design + aplicação de rena</h3>
-        <div class="validity">Válido somente esta semana</div>
-        <div class="price">R$ 109,90</div>
-      </article>
-
-      <article class="card combo-card">
-        <h3>Escova + pé ou mão</h3>
-        <div class="validity">Válido somente esta semana</div>
-        <div class="price">R$ 75,90</div>
-      </article>
-
-      <article class="card combo-card">
-        <h3>Escova + sobrancelha + buço</h3>
-        <div class="validity">Válido somente esta semana</div>
-        <div class="price">R$ 79,90</div>
-      </article>
-
-      <article class="card combo-card">
-        <h3>Progressiva + sobrancelha</h3>
-        <div class="validity">Válido somente esta semana</div>
-        <div class="price">R$ 179,90</div>
-      </article>
-
-      <article class="card combo-card">
-        <h3>Progressiva + pé</h3>
-        <div class="validity">Válido somente esta semana</div>
-        <div class="price">R$ 149,90</div>
-      </article>
-
-      <article class="card combo-card">
-        <h3>Limpeza de pele + sobrancelha + buço</h3>
-        <div class="validity">Válido somente esta semana</div>
-        <div class="price">R$ 149,90</div>
-      </article>
-
-      <article class="card combo-card">
-        <h3>Lavada premium + pé e mão + design de sobrancelha</h3>
-        <div class="validity">Válido somente esta semana</div>
-        <div class="price">R$ 139,90</div>
-      </article>
-
-      <article class="card combo-card">
-        <h3>Design de sobrancelha + pé e mão</h3>
-        <div class="validity">Válido somente esta semana</div>
-        <div class="price">R$ 79,90</div>
-      </article>
-
-      <article class="card combo-card">
-        <h3>Depilação completa + design de sobrancelha</h3>
-        <div class="validity">Válido somente esta semana</div>
-        <div class="price">R$ 129,90</div>
-      </article>
-
-      <article class="card combo-card">
-        <h3>Limpeza de pele + design de sobrancelha</h3>
-        <div class="validity">Válido somente esta semana</div>
-        <div class="price">R$ 119,90</div>
-      </article>
-    </div>
-  </section>
-
-  <section id="procedimentos">
-    <div class="title">
-      <div class="eyebrow">Serviços individuais</div>
-      <h2>Procedimentos avulsos</h2>
-      <p>Escolha somente o serviço que deseja realizar.</p>
-    </div>
-
-    <p class="section-note">
-      Os valores abaixo são os valores avulsos já definidos para o salão.
-      Para outros procedimentos, consulte o atendimento pelo WhatsApp.
-    </p>
-
-    <div class="cards">
-      <article class="card">
-        <h3>Progressiva</h3>
-        <p>Alinhamento e tratamento dos fios.</p>
-        <span class="duration">Duração aproximada: 180 min</span>
-        <div class="price">A partir de R$ 180,00</div>
-      </article>
-
-      <article class="card">
-        <h3>Escova</h3>
-        <p>Finalização e modelagem dos cabelos.</p>
-        <span class="duration">Duração aproximada: 40 min</span>
-        <div class="price">R$ 60,00</div>
-      </article>
-
-      <article class="card">
-        <h3>Nutrição</h3>
-        <p>Tratamento para os fios.</p>
-        <div class="price">R$ 80,00</div>
-      </article>
-
-      <article class="card">
-        <h3>Coloração — aplicação</h3>
-        <p>Aplicação de coloração.</p>
-        <div class="price">R$ 60,00</div>
-      </article>
-
-      <article class="card">
-        <h3>Pé e mão</h3>
-        <p>Cuidados completos para mãos e pés.</p>
-        <span class="duration">Duração aproximada: 90 min</span>
-        <div class="price">R$ 50,00</div>
-      </article>
-
-      <article class="card">
-        <h3>Design de sobrancelha</h3>
-        <p>Design para valorizar o olhar.</p>
-        <div class="price">R$ 40,00</div>
-      </article>
-
-      <article class="card">
-        <h3>Buço</h3>
-        <p>Depilação facial.</p>
-        <div class="price">R$ 15,00</div>
-      </article>
-
-      <article class="card">
-        <h3>Depilação completa</h3>
-        <p>Depilação completa com cera.</p>
-        <div class="price">R$ 110,00</div>
-      </article>
-
-      <article class="card">
-        <h3>Depilação cava funda</h3>
-        <p>Depilação com cera na região de cava funda.</p>
-        <div class="price">R$ 80,00</div>
-      </article>
-
-      <article class="card">
-        <h3>Outros procedimentos</h3>
-        <p>Consulte serviços e valores pelo WhatsApp do salão.</p>
-      </article>
-    </div>
-  </section>
-
-  <section id="agendamento">
-    <div class="title">
-      <div class="eyebrow">Agendamento</div>
-      <h2>Agende seu horário</h2>
-      <p>Você não escolhe a profissional. O salão organiza o atendimento.</p>
-    </div>
-
-    <form class="booking" id="bookingForm">
-      <div class="form-grid">
-        <div class="field">
-          <label for="client">Seu nome</label>
-          <input id="client" type="text" placeholder="Digite seu nome" required>
-        </div>
-
-        <div class="field">
-          <label for="phone">Seu telefone</label>
-          <input id="phone" type="tel" placeholder="(62) 99999-9999" required>
-        </div>
-
-        <div class="field full">
-          <label for="procedure">Procedimento</label>
-          <select id="procedure" required>
-            <option value="">Selecione o procedimento ou combo</option>
-
-            <optgroup label="Combos">
-              <option>Escova + Ozonioterapia + Reconstrução Day by Day — R$ 99,90</option>
-              <option>Pé e mão — R$ 50,00</option>
-              <option>Escova + mão ou pé + design de sobrancelha — R$ 79,90</option>
-              <option>Detox + escova + pé ou mão — R$ 129,90</option>
-              <option>Depilação cava funda + design + aplicação de rena — R$ 109,90</option>
-              <option>Escova + pé ou mão — R$ 75,90</option>
-              <option>Escova + sobrancelha + buço — R$ 79,90</option>
-              <option>Progressiva + sobrancelha — R$ 179,90</option>
-              <option>Progressiva + pé — R$ 149,90</option>
-              <option>Limpeza de pele + sobrancelha + buço — R$ 149,90</option>
-              <option>Lavada premium + pé e mão + design de sobrancelha — R$ 139,90</option>
-              <option>Design de sobrancelha + pé e mão — R$ 79,90</option>
-              <option>Depilação completa + design de sobrancelha — R$ 129,90</option>
-              <option>Limpeza de pele + design de sobrancelha — R$ 119,90</option>
-            </optgroup>
-
-            <optgroup label="Avulsos">
-              <option>Nutrição — R$ 80,00</option>
-              <option>Escova — R$ 60,00</option>
-              <option>Coloração — aplicação — R$ 60,00</option>
-              <option>Progressiva — a partir de R$ 180,00</option>
-              <option>Pé e mão — R$ 50,00</option>
-              <option>Design de sobrancelha — R$ 40,00</option>
-              <option>Buço — R$ 15,00</option>
-              <option>Depilação completa — R$ 110,00</option>
-              <option>Depilação cava funda — R$ 80,00</option>
-              <option>Outro procedimento</option>
-            </optgroup>
-          </select>
-        </div>
-
-        <div class="field">
-          <label for="date">Data desejada</label>
-          <input id="date" type="date" required>
-        </div>
-
-        <div class="field">
-          <label for="time">Horário desejado</label>
-          <input id="time" type="time" min="09:00" max="19:00" required>
-        </div>
-
-        <div class="field full">
-          <label for="message">Observação (opcional)</label>
-          <textarea id="message" placeholder="Ex.: gostaria de agendar para duas pessoas..."></textarea>
-        </div>
-      </div>
-
-      <div class="notice">
-        <strong>Importante</strong>
-        Este formulário não salva seus dados nem cria um cadastro no site.
-        Ao clicar em “Enviar pelo WhatsApp”, a mensagem é aberta no WhatsApp
-        do salão para o atendimento confirmar o horário.
-      </div>
-
-      <button class="btn whatsapp" type="submit" style="width:100%">
-        Enviar agendamento pelo WhatsApp
-      </button>
-
-      <div id="status" class="status"></div>
-    </form>
-  </section>
-
-  <section id="contato">
-    <div class="title">
-      <div class="eyebrow">Fale conosco</div>
-      <h2>Contato e localização</h2>
-    </div>
-
-    <div class="contact">
-      <div class="card">
-        <h3>WhatsApp</h3>
-        <p>Fale diretamente com o salão.</p>
-        <br>
-        <a href="https://wa.me/5562996344257" target="_blank" rel="noopener">
-          (62) 99634-4257
-        </a>
-      </div>
-
-      <div class="card">
-        <h3>Endereço</h3>
-        <p>R. Osório de Morais, esquina com Av. Rio Vermelho</p>
-        <p>Goiânia – GO, 74355-533</p>
-      </div>
-    </div>
-  </section>
-</main>
-
-<div class="bottom">
-  <a class="btn secondary" href="#inicio">Início</a>
-  <a class="btn whatsapp" href="#agendamento">Agendar</a>
+<div>
+<h1>Dona Beleza</h1>
+<small>Gestão do salão</small>
 </div>
 
-<footer>
-  <strong>DONA BELEZA | SALÃO & ESTÉTICA</strong>
-  <p>Goiânia – Goiás</p>
-  <p>© 2026 Dona Beleza. Todos os direitos reservados.</p>
-</footer>
+</div>
+
+</div>
+</header>
+
+<main class="container">
+
+<!-- RESUMO -->
+
+<section id="home" class="page active">
+
+<div class="card hero">
+
+<h2>Olá, administradora 🤎</h2>
+
+<p class="muted">
+Controle profissionais, atendimentos,
+comissões, despesas e investimentos.
+</p>
+
+<div class="kpis">
+
+<div class="kpi">
+<span>Faturamento</span>
+<strong id="faturamento">R$ 0,00</strong>
+</div>
+
+<div class="kpi">
+<span>Comissões</span>
+<strong id="comissoes">R$ 0,00</strong>
+</div>
+
+<div class="kpi">
+<span>Despesas</span>
+<strong id="despesasTotal">R$ 0,00</strong>
+</div>
+
+<div class="kpi">
+<span>Investimentos</span>
+<strong id="investimentosTotal">R$ 0,00</strong>
+</div>
+
+</div>
+</div>
+
+
+<div class="menu">
+
+<button onclick="abrir('profissionais')">
+<span class="icon">👩‍💼</span>
+Profissionais
+</button>
+
+<button onclick="abrir('relatorios')">
+<span class="icon">📊</span>
+Relatórios
+</button>
+
+<button onclick="abrir('atendimentos')">
+<span class="icon">✂️</span>
+Atendimentos
+</button>
+
+<button onclick="abrir('fechamento')">
+<span class="icon">📆</span>
+Fechamento 15 dias
+</button>
+
+<button onclick="abrir('despesas')">
+<span class="icon">🧾</span>
+Despesas
+</button>
+
+<button onclick="abrir('investimentos')">
+<span class="icon">🏗️</span>
+Investimentos
+</button>
+
+</div>
+
+<div class="footer">
+Dona Beleza • Gestão
+</div>
+
+</section>
+
+
+<!-- PROFISSIONAIS -->
+
+<section id="profissionais" class="page">
+
+<div class="card">
+
+<button class="back" onclick="abrir('home')">
+← Voltar
+</button>
+
+<h2>Profissionais</h2>
+
+<p class="muted">
+Cadastre as profissionais e a porcentagem de comissão.
+</p>
+
+<form id="formProfissional">
+
+<label>Nome da profissional</label>
+
+<input
+id="nomeProfissional"
+placeholder="Ex.: Maria"
+required
+>
+
+<label>Comissão (%)</label>
+
+<input
+id="comissaoProfissional"
+type="number"
+min="0"
+max="100"
+step="0.01"
+placeholder="Ex.: 50"
+required
+>
+
+<button class="primary">
+Cadastrar profissional
+</button>
+
+</form>
+
+<div id="listaProfissionais" class="list"></div>
+
+</div>
+
+</section>
+
+
+<!-- ATENDIMENTOS -->
+
+<section id="atendimentos" class="page">
+
+<div class="card">
+
+<button class="back" onclick="abrir('home')">
+← Voltar
+</button>
+
+<h2>Atendimentos</h2>
+
+<p class="muted">
+Registre qual profissional realizou cada atendimento.
+</p>
+
+<form id="formAtendimento">
+
+<label>Profissional</label>
+
+<select id="profissionalAtendimento" required>
+<option value="">Selecione</option>
+</select>
+
+<label>Cliente</label>
+
+<input
+id="clienteAtendimento"
+placeholder="Nome da cliente"
+required
+>
+
+<label>Serviço</label>
+
+<input
+id="servicoAtendimento"
+placeholder="Ex.: Escova"
+required
+>
+
+<div class="row">
+
+<div>
+
+<label>Valor</label>
+
+<input
+id="valorAtendimento"
+type="number"
+step="0.01"
+min="0"
+placeholder="0,00"
+required
+>
+
+</div>
+
+<div>
+
+<label>Data</label>
+
+<input
+id="dataAtendimento"
+type="date"
+required
+>
+
+</div>
+
+</div>
+
+<button class="primary">
+Registrar atendimento
+</button>
+
+</form>
+
+<div id="listaAtendimentos" class="list"></div>
+
+</div>
+
+</section>
+
+
+<!-- RELATÓRIOS -->
+
+<section id="relatorios" class="page">
+
+<div class="card">
+
+<button class="back" onclick="abrir('home')">
+← Voltar
+</button>
+
+<h2>Relatórios</h2>
+
+<p class="muted">
+Resultado individual de cada profissional.
+</p>
+
+<div id="listaRelatorios" class="list"></div>
+
+</div>
+
+</section>
+
+
+<!-- FECHAMENTO -->
+
+<section id="fechamento" class="page">
+
+<div class="card">
+
+<button class="back" onclick="abrir('home')">
+← Voltar
+</button>
+
+<h2>Fechamento de 15 dias</h2>
+
+<p class="muted">
+Controle das comissões e pagamentos das profissionais.
+</p>
+
+<div id="listaFechamento" class="list"></div>
+
+</div>
+
+</section>
+
+
+<!-- DESPESAS -->
+
+<section id="despesas" class="page">
+
+<div class="card">
+
+<button class="back" onclick="abrir('home')">
+← Voltar
+</button>
+
+<h2>Despesas</h2>
+
+<form id="formDespesa">
+
+<label>Descrição</label>
+
+<input
+id="descricaoDespesa"
+placeholder="Ex.: Produtos"
+required
+>
+
+<label>Valor</label>
+
+<input
+id="valorDespesa"
+type="number"
+step="0.01"
+min="0"
+required
+>
+
+<label>Data</label>
+
+<input
+id="dataDespesa"
+type="date"
+required
+>
+
+<button class="primary">
+Adicionar despesa
+</button>
+
+</form>
+
+<div id="listaDespesas" class="list"></div>
+
+</div>
+
+</section>
+
+
+<!-- INVESTIMENTOS -->
+
+<section id="investimentos" class="page">
+
+<div class="card">
+
+<button class="back" onclick="abrir('home')">
+← Voltar
+</button>
+
+<h2>Investimentos</h2>
+
+<p class="muted">
+Controle separado dos investimentos do salão.
+</p>
+
+<form id="formInvestimento">
+
+<label>Descrição</label>
+
+<input
+id="descricaoInvestimento"
+placeholder="Ex.: Equipamento"
+required
+>
+
+<label>Valor</label>
+
+<input
+id="valorInvestimento"
+type="number"
+step="0.01"
+min="0"
+required
+>
+
+<label>Data</label>
+
+<input
+id="dataInvestimento"
+type="date"
+required
+>
+
+<button class="primary">
+Adicionar investimento
+</button>
+
+</form>
+
+<div id="listaInvestimentos" class="list"></div>
+
+</div>
+
+</section>
+
+</main>
+
+</div>
+
 
 <script>
-  /*
-    IMPORTANTE:
-    Esta versão NÃO usa banco de dados, localStorage ou cadastro.
-    O agendamento é apenas montado e enviado para o WhatsApp do salão.
-  */
 
-  const form = document.getElementById('bookingForm');
-  const status = document.getElementById('status');
-  const dateInput = document.getElementById('date');
+const CHAVE = "dona_beleza_gestao";
 
-  // Impede escolher uma data anterior à de hoje.
-  const hoje = new Date();
-  const yyyy = hoje.getFullYear();
-  const mm = String(hoje.getMonth() + 1).padStart(2, '0');
-  const dd = String(hoje.getDate()).padStart(2, '0');
+let banco =
+JSON.parse(
+localStorage.getItem(CHAVE)
+) || {
 
-  dateInput.min = `${yyyy}-${mm}-${dd}`;
+profissionais:[],
+atendimentos:[],
+despesas:[],
+investimentos:[],
+pagamentos:[]
 
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
+};
 
-    const client = document.getElementById('client').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const procedure = document.getElementById('procedure').value;
-    const date = document.getElementById('date').value;
-    const time = document.getElementById('time').value;
-    const message = document.getElementById('message').value.trim();
 
-    if(!client || !phone || !procedure || !date || !time){
-      status.className = 'status error';
-      status.textContent =
-        'Preencha seu nome, telefone, procedimento, data e horário.';
-      return;
-    }
+function salvar(){
 
-    const [y,m,d] = date.split('-');
-    const dataFormatada = `${d}/${m}/${y}`;
+localStorage.setItem(
+CHAVE,
+JSON.stringify(banco)
+);
 
-    const texto =
-`Olá, Dona Beleza! Gostaria de solicitar um agendamento.
+renderizar();
 
-Nome: ${client}
-Telefone: ${phone}
-Procedimento: ${procedure}
-Data desejada: ${dataFormatada}
-Horário desejado: ${time}
-${message ? `Observação: ${message}` : ''}
+}
 
-Aguardo a confirmação do salão.`;
 
-    const url =
-      'https://wa.me/5562996344257?text=' +
-      encodeURIComponent(texto);
+function dinheiro(valor){
 
-    status.className = 'status ok';
-    status.textContent =
-      'Abrindo o WhatsApp para enviar sua solicitação...';
+return Number(valor || 0)
+.toLocaleString(
+"pt-BR",
+{
+style:"currency",
+currency:"BRL"
+}
+);
 
-    window.open(url, '_blank', 'noopener');
-  });
+}
+
+
+function abrir(pagina){
+
+document
+.querySelectorAll(".page")
+.forEach(
+p=>p.classList.remove("active")
+);
+
+document
+.getElementById(pagina)
+.classList.add("active");
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+renderizar();
+
+}
+
+
+function escapar(texto){
+
+return String(texto)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+/* PROFISSIONAIS */
+
+document
+.getElementById("formProfissional")
+.onsubmit=function(e){
+
+e.preventDefault();
+
+banco.profissionais.push({
+
+id:Date.now(),
+
+nome:
+document
+.getElementById("nomeProfissional")
+.value
+.trim(),
+
+comissao:
+Number(
+document
+.getElementById("comissaoProfissional")
+.value
+)
+
+});
+
+e.target.reset();
+
+salvar();
+
+};
+
+
+/* ATENDIMENTOS */
+
+document
+.getElementById("formAtendimento")
+.onsubmit=function(e){
+
+e.preventDefault();
+
+const profissional=
+banco.profissionais.find(
+p=>
+p.id ==
+Number(
+document
+.getElementById("profissionalAtendimento")
+.value
+)
+);
+
+if(!profissional){
+
+alert(
+"Cadastre uma profissional primeiro."
+);
+
+return;
+
+}
+
+const valor=
+Number(
+document
+.getElementById("valorAtendimento")
+.value
+);
+
+banco.atendimentos.push({
+
+id:Date.now(),
+
+profissionalId:
+profissional.id,
+
+profissional:
+profissional.nome,
+
+cliente:
+document
+.getElementById("clienteAtendimento")
+.value
+.trim(),
+
+servico:
+document
+.getElementById("servicoAtendimento")
+.value
+.trim(),
+
+valor:valor,
+
+comissao:
+valor *
+profissional.comissao /
+100,
+
+data:
+document
+.getElementById("dataAtendimento")
+.value
+
+});
+
+e.target.reset();
+
+salvar();
+
+};
+
+
+/* DESPESAS */
+
+document
+.getElementById("formDespesa")
+.onsubmit=function(e){
+
+e.preventDefault();
+
+banco.despesas.push({
+
+id:Date.now(),
+
+descricao:
+document
+.getElementById("descricaoDespesa")
+.value
+.trim(),
+
+valor:
+Number(
+document
+.getElementById("valorDespesa")
+.value
+),
+
+data:
+document
+.getElementById("dataDespesa")
+.value
+
+});
+
+e.target.reset();
+
+salvar();
+
+};
+
+
+/* INVESTIMENTOS */
+
+document
+.getElementById("formInvestimento")
+.onsubmit=function(e){
+
+e.preventDefault();
+
+banco.investimentos.push({
+
+id:Date.now(),
+
+descricao:
+document
+.getElementById("descricaoInvestimento")
+.value
+.trim(),
+
+valor:
+Number(
+document
+.getElementById("valorInvestimento")
+.value
+),
+
+data:
+document
+.getElementById("dataInvestimento")
+.value
+
+});
+
+e.target.reset();
+
+salvar();
+
+};
+
+
+/* PAGAMENTO */
+
+function pagar(id,valor){
+
+if(
+confirm(
+"Confirmar pagamento de "+
+dinheiro(valor)+"?"
+)
+){
+
+banco.pagamentos.push({
+
+id:Date.now(),
+
+profissionalId:id,
+
+valor:valor,
+
+data:new Date()
+.toISOString()
+.slice(0,10)
+
+});
+
+salvar();
+
+}
+
+}
+
+
+/* RENDERIZAR */
+
+function renderizar(){
+
+const faturamento=
+banco.atendimentos
+.reduce(
+(total,a)=>
+total + a.valor,
+0
+);
+
+const comissoes=
+banco.atendimentos
+.reduce(
+(total,a)=>
+total + a.comissao,
+0
+);
+
+const despesas=
+banco.despesas
+.reduce(
+(total,d)=>
+total + d.valor,
+0
+);
+
+const investimentos=
+banco.investimentos
+.reduce(
+(total,i)=>
+total + i.valor,
+0
+);
+
+
+document
+.getElementById("faturamento")
+.textContent=
+dinheiro(faturamento);
+
+document
+.getElementById("comissoes")
+.textContent=
+dinheiro(comissoes);
+
+document
+.getElementById("despesasTotal")
+.textContent=
+dinheiro(despesas);
+
+document
+.getElementById("investimentosTotal")
+.textContent=
+dinheiro(investimentos);
+
+
+/* SELECT */
+
+const select=
+document
+.getElementById(
+"profissionalAtendimento"
+);
+
+select.innerHTML=
+'<option value="">Selecione</option>'+
+
+banco.profissionais
+.map(
+p=>
+`<option value="${p.id}">
+${escapar(p.nome)} • ${p.comissao}%
+</option>`
+)
+.join("");
+
+
+/* PROFISSIONAIS */
+
+document
+.getElementById("listaProfissionais")
+.innerHTML=
+banco.profissionais
+.map(p=>{
+
+const atendimentos=
+banco.atendimentos
+.filter(
+a=>a.profissionalId===p.id
+);
+
+const faturou=
+atendimentos
+.reduce(
+(t,a)=>t+a.valor,
+0
+);
+
+const comissao=
+atendimentos
+.reduce(
+(t,a)=>t+a.comissao,
+0
+);
+
+return `
+
+<div class="item">
+
+<b>
+${escapar(p.nome)}
+</b>
+
+<span>
+
+<span class="badge">
+${p.comissao}% comissão
+</span>
+
+• ${atendimentos.length}
+atendimentos
+
+• Faturamento:
+${dinheiro(faturou)}
+
+• Comissão:
+${dinheiro(comissao)}
+
+</span>
+
+</div>
+
+`;
+
+})
+.join("")
+||
+'<div class="empty">
+Nenhuma profissional cadastrada.
+</div>';
+
+
+/* ATENDIMENTOS */
+
+document
+.getElementById("listaAtendimentos")
+.innerHTML=
+[...banco.atendimentos]
+.reverse()
+.map(a=>`
+
+<div class="item">
+
+<b>
+${escapar(a.servico)}
+•
+${dinheiro(a.valor)}
+</b>
+
+<span>
+
+Cliente:
+${escapar(a.cliente)}
+
+<br>
+
+Profissional:
+${escapar(a.profissional)}
+
+<br>
+
+Data:
+${a.data}
+
+<br>
+
+Comissão:
+${dinheiro(a.comissao)}
+
+</span>
+
+</div>
+
+`)
+.join("")
+||
+'<div class="empty">
+Nenhum atendimento registrado.
+</div>';
+
+
+/* RELATÓRIOS */
+
+document
+.getElementById("listaRelatorios")
+.innerHTML=
+banco.profissionais
+.map(p=>{
+
+const lista=
+banco.atendimentos
+.filter(
+a=>a.profissionalId===p.id
+);
+
+const faturamento=
+lista.reduce(
+(t,a)=>t+a.valor,
+0
+);
+
+const comissao=
+lista.reduce(
+(t,a)=>t+a.comissao,
+0
+);
+
+const salao=
+faturamento-comissao;
+
+return `
+
+<div class="item">
+
+<b>
+${escapar(p.nome)}
+</b>
+
+<span>
+
+Atendimentos:
+${lista.length}
+
+<br>
+
+Faturamento:
+${dinheiro(faturamento)}
+
+<br>
+
+Comissão:
+${dinheiro(comissao)}
+
+<br>
+
+Parte do salão:
+${dinheiro(salao)}
+
+</span>
+
+</div>
+
+`;
+
+})
+.join("")
+||
+'<div class="empty">
+Cadastre profissionais para gerar relatórios.
+</div>';
+
+
+/* FECHAMENTO */
+
+document
+.getElementById("listaFechamento")
+.innerHTML=
+banco.profissionais
+.map(p=>{
+
+const comissao=
+banco.atendimentos
+.filter(
+a=>a.profissionalId===p.id
+)
+.reduce(
+(t,a)=>t+a.comissao,
+0
+);
+
+const pago=
+banco.pagamentos
+.filter(
+x=>x.profissionalId===p.id
+)
+.reduce(
+(t,x)=>t+x.valor,
+0
+);
+
+const restante=
+Math.max(
+0,
+comissao-pago
+);
+
+return `
+
+<div class="item">
+
+<b>
+${escapar(p.nome)}
+</b>
+
+<span>
+
+Comissão:
+${dinheiro(comissao)}
+
+<br>
+
+Já pago:
+${dinheiro(pago)}
+
+<br>
+
+<strong>
+A pagar:
+${dinheiro(restante)}
+</strong>
+
+</span>
+
+${
+restante > 0
+
+?
+
+`<button
+class="primary"
+style="margin-top:10px"
+onclick="pagar(${p.id},${restante})"
+>
+Marcar pagamento
+</button>`
+
+:
+
+`<span class="badge">
+Em dia
+</span>`
+
+}
+
+</div>
+
+`;
+
+})
+.join("")
+||
+'<div class="empty">
+Nenhuma profissional cadastrada.
+</div>';
+
+
+/* DESPESAS */
+
+document
+.getElementById("listaDespesas")
+.innerHTML=
+[...banco.despesas]
+.reverse()
+.map(d=>`
+
+<div class="item">
+
+<b>
+${escapar(d.descricao)}
+</b>
+
+<span>
+${d.data}
+•
+${dinheiro(d.valor)}
+</span>
+
+</div>
+
+`)
+.join("")
+||
+'<div class="empty">
+Nenhuma despesa registrada.
+</div>';
+
+
+/* INVESTIMENTOS */
+
+document
+.getElementById("listaInvestimentos")
+.innerHTML=
+[...banco.investimentos]
+.reverse()
+.map(i=>`
+
+<div class="item">
+
+<b>
+${escapar(i.descricao)}
+</b>
+
+<span>
+${i.data}
+•
+${dinheiro(i.valor)}
+</span>
+
+</div>
+
+`)
+.join("")
+||
+'<div class="empty">
+Nenhum investimento registrado.
+</div>';
+
+}
+
+
+/* DATA DE HOJE */
+
+const hoje=
+new Date()
+.toISOString()
+.slice(0,10);
+
+document
+.getElementById("dataAtendimento")
+.value=hoje;
+
+document
+.getElementById("dataDespesa")
+.value=hoje;
+
+document
+.getElementById("dataInvestimento")
+.value=hoje;
+
+
+/* INICIAR */
+
+renderizar();
+
 </script>
 
 </body>
-</html></body>
 </html>
