@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#6b4637">
+<title>Dona Beleza | Agende seu horário</title>
+<style>
+:root{--brown:#6b4637;--brown2:#8f624d;--cream:#fbf6f1;--gold:#c49a6c;--ink:#352721;--muted:#806f66;--line:#eaded5;--white:#fff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+button,input,select{font:inherit}button{cursor:pointer}
+header{position:sticky;top:0;z-index:20;background:rgba(251,246,241,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{max-width:1100px;margin:auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;color:var(--brown);font-weight:800;letter-spacing:.4px}
+.brand img{width:45px;height:45px;border-radius:50%;object-fit:cover}
+.brand div span{display:block;font-size:20px;letter-spacing:1.5px}
+.brand div small{font-weight:500;color:var(--brown2);letter-spacing:2px}
+.navlinks{display:flex;gap:8px}.navlinks button{border:0;background:none;color:var(--brown);padding:9px 11px;border-radius:9px}
+.hero{max-width:1100px;margin:auto;padding:70px 18px 45px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.kicker{color:var(--brown2);font-weight:700;letter-spacing:2px;text-transform:uppercase;font-size:12px}
+h1{font-family:Georgia,serif;font-weight:500;font-size:clamp(40px,7vw,68px);line-height:1.02;margin:12px 0;color:var(--brown)}
+.hero p{font-size:17px;line-height:1.6;color:var(--muted);max-width:560px}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.btn{border:0;border-radius:12px;padding:13px 18px;background:var(--brown);color:white;font-weight:750}
+.btn.alt{background:white;color:var(--brown);border:1px solid var(--line)}
+.heroCard{background:linear-gradient(145deg,#6b4637,#9b6c54);border-radius:26px;padding:32px;color:white;min-height:330px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 18px 50px #6b463733}
+.heroCard .seal{width:78px;height:78px;border:1px solid #fff8;border-radius:50%;display:grid;place-items:center;font-family:Georgia,serif;font-size:24px}
+.heroCard h2{font:500 35px Georgia,serif;margin:0}
+.heroCard p{color:#fff9;margin:8px 0 0}
+section.wrap{max-width:1100px;margin:auto;padding:42px 18px}
+.title{text-align:center;margin-bottom:25px}.title h2{font:500 34px Georgia,serif;color:var(--brown);margin:0 0 7px}.title p{color:var(--muted);margin:0}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.card{background:white;border:1px solid var(--line);border-radius:18px;padding:19px}
+.card h3{margin:0 0 7px;color:var(--brown)}.price{font-size:20px;font-weight:800;color:var(--brown2)}
+.booking{max-width:850px;margin:auto;background:white;border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:0 12px 35px #6b463712}
+.steps{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}.step{padding:7px 10px;border-radius:20px;background:#f0e6df;color:var(--muted);font-size:12px}.step.active{background:var(--brown);color:white}
+label{font-weight:700;font-size:13px;display:block;margin:14px 0 6px}input,select{width:100%;padding:13px;border:1px solid #dcd0c8;border-radius:11px;background:white;color:var(--ink)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.serviceGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.service{border:1px solid var(--line);border-radius:13px;padding:13px;background:white;text-align:left}.service.selected{border:2px solid var(--brown);background:#fbf2eb}.service b{display:block;color:var(--brown)}.service small{color:var(--muted)}
+.days,.times{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}.pick{border:1px solid var(--line);background:white;border-radius:10px;padding:11px 5px;text-align:center}.pick.selected{background:var(--brown);color:white;border-color:var(--brown)}.pick.off{opacity:.35;text-decoration:line-through;cursor:not-allowed}
+.notice{padding:12px 14px;border-radius:12px;background:#f6ece5;color:var(--brown);font-size:13px;margin:12px 0}
+.confirm{display:none;text-align:center;padding:25px}.confirm.show{display:block}.check{width:68px;height:68px;border-radius:50%;background:#ead8c9;color:var(--brown);display:grid;place-items:center;font-size:32px;margin:0 auto 12px}
+.summary{background:#fbf6f1;border-radius:14px;padding:15px;text-align:left;margin:16px 0}.summary div{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line)}.summary div:last-child{border:0}
+.admin{display:none}.admin.show{display:block}.adminBox{background:white;border:1px solid var(--line);border-radius:18px;padding:20px}table{width:100%;border-collapse:collapse}th,td{padding:10px 5px;text-align:left;border-bottom:1px solid var(--line);font-size:13px}
+footer{background:var(--brown);color:white;margin-top:40px;padding:35px 18px;text-align:center}footer small{opacity:.8}
+.modal{display:none;position:fixed;inset:0;background:#0007;z-index:50;align-items:center;justify-content:center;padding:18px}.modal.show{display:flex}.modalBox{background:white;border-radius:18px;padding:22px;width:min(440px,100%)}
+@media(max-width:760px){.hero{grid-template-columns:1fr;padding-top:45px}.heroCard{min-height:260px}.cards{grid-template-columns:1fr 1fr}.navlinks button:not(:last-child){display:none}}
+@media(max-width:500px){.cards,.serviceGrid,.grid2{grid-template-columns:1fr}.days,.times{grid-template-columns:repeat(3,1fr)}.hero{padding-bottom:20px}}
+</style>
+</head>
+<body>
+<header><div class="nav">
+<div class="brand"><img src="data:image/png;base64,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" alt="Logo Dona Beleza"><div><span>DONA BELEZA</span><small>Salão & Estética</small></div></div>
+<div class="navlinks"><button onclick="scrollToId('servicos')">Serviços</button><button onclick="scrollToId('agendar')">Agendar</button><button onclick="openAdmin()">Área do salão</button></div>
+</div></header>
+
+<section class="hero">
+
+<div><div class="kicker">Seu momento de beleza</div><h1>Realce sua beleza no Dona Beleza.</h1><p>Escolha seu procedimento, encontre um dia e horário disponível e confirme seu agendamento de forma rápida pelo WhatsApp.</p><div class="cta"><button class="btn" onclick="scrollToId('agendar')">Agendar meu horário</button><button class="btn alt" onclick="scrollToId('servicos')">Ver procedimentos</button></div></div>
+<div class="heroCard"><div class="seal">DB</div><div><h2>Dona Beleza</h2><p>Salão & Estética</p></div></div>
+</section>
+
+
+<section class="wrap" style="padding-top:10px">
+<div class="cards">
+<div class="card"><h3>✨ Atendimento especial</h3><p style="color:var(--muted)">Cuidados pensados para você se sentir ainda mais bonita.</p></div>
+<div class="card"><h3>📅 Agendamento fácil</h3><p style="color:var(--muted)">Escolha o procedimento, dia e horário direto pelo celular.</p></div>
+<div class="card"><h3>💬 Confirmação pelo WhatsApp</h3><p style="color:var(--muted)">Receba a confirmação e fale com o Dona Beleza.</p></div>
+</div>
+</section>
+<section id="servicos" class="wrap"><div class="title"><h2>Procedimentos</h2><p>Escolha o serviço que deseja realizar.</p></div><div class="cards" id="serviceCards"></div></section>
+
+<section id="agendar" class="wrap"><div class="title"><h2>Agende seu horário</h2><p>Os horários reservados deixam de aparecer como disponíveis.</p></div>
+<div class="booking">
+<div id="bookingForm">
+<div class="steps"><span class="step active">1. Serviço</span><span class="step">2. Data e horário</span><span class="step">3. Seus dados</span></div>
+<div class="serviceGrid" id="servicePicker"></div>
+<div id="scheduleArea" style="display:none">
+<div class="notice">🔒 Ao confirmar, o horário fica reservado e não aparece novamente nesta agenda.</div>
+<div class="grid2"><div><label>Dia</label><div class="days" id="days"></div></div><div><label>Horários disponíveis</label><div class="times" id="times"></div></div></div>
+<div class="grid2"><div><label>Seu nome</label><input id="clientName" placeholder="Nome completo"></div><div><label>WhatsApp</label><input id="clientPhone" placeholder="(00) 00000-0000"></div></div>
+<label>Observação (opcional)</label><input id="obs" placeholder="Alguma informação para o salão?">
+<button class="btn" style="margin-top:16px;width:100%" onclick="book()">Confirmar e ir para o WhatsApp</button>
+</div></div>
+<div class="confirm" id="confirm"><div class="check">✓</div><h2>Horário reservado!</h2><p id="confirmText"></p><button class="btn" onclick="sendWhatsApp()">Continuar no WhatsApp</button></div>
+</div></section>
+
+<section id="admin" class="wrap admin"><div class="title"><h2>Área do salão</h2><p>Controle os horários reservados neste dispositivo.</p></div><div class="adminBox">
+<div class="grid2"><div><label>WhatsApp do salão</label><input id="wa" placeholder="Ex.: 5562999999999"></div><div style="display:flex;align-items:end"><button class="btn" onclick="saveWA()">Salvar WhatsApp</button></div></div>
+<div class="notice">🔐 Área administrativa: protegida por senha. Clientes não têm acesso aos agendamentos administrativos.<br><br>Importante: esta versão é um protótipo local. Para bloquear horários em tempo real para <b>todas as clientes</b> em celulares diferentes, o site precisa de um banco de dados online.</div>
+<div id="adminTable"></div><button class="btn danger" style="margin-top:15px" onclick="clearBookings()">Apagar reservas deste dispositivo</button>
+</div></section>
+
+
+<section class="wrap" style="padding-bottom:50px">
+<div class="booking" style="background:linear-gradient(145deg,#6b4637,#9b6c54);color:white;text-align:center">
+<h2 style="font:500 34px Georgia,serif;margin:0 0 8px">Seu momento começa aqui.</h2>
+<p style="opacity:.9;line-height:1.5">Escolha seu procedimento e reserve seu horário no Dona Beleza.</p>
+<button class="btn" style="background:#fff;color:#6b4637;margin-top:10px" onclick="document.getElementById('agendar').scrollIntoView({behavior:'smooth'})">Agendar agora</button>
+</div>
+</section>
+<footer><b>DONA BELEZA</b><br><small>Salão & Estética • Agende seu momento de beleza</small></footer>
+
+<div class="modal" id="modal"><div class="modalBox"><h3>🔐 Área exclusiva do administrador</h3><p>Aqui somente o administrador pode ver e gerenciar os agendamentos e alterar o WhatsApp do salão.</p><label>Senha</label><input id="adminPass" type="password" placeholder="Senha"><button class="btn" onclick="checkAdmin()">Entrar</button></div></div>
+
+<script>
+const SERVICES=[
+["Escova com ozônio terapia + reconstrução day by day",99.90,40],
+["Pé e mão",50,90],
+["Escova + mão ou pé + design de sobrancelha",79.90,70],
+["Detox + escova + pé ou mão",129.90,100],
+["Depilação cava funda + design + aplicação de rena",109.90,60],
+["Escova + pé ou mão",75.90,70],
+["Escova + sobrancelha + buço",79.90,60],
+["Progressiva + sobrancelha",179.90,180],
+["Progressiva + pé",149.90,210],
+["Limpeza de pele + sobrancelha + buço",149.90,90],
+["Lavada premium + pé e mão + design de sobrancelha",139.90,120],
+["Design de sobrancelha + pé e mão",79.90,110],
+["Depilação completa + design de sobrancelha",129.90,90],
+["Limpeza de pele + design de sobrancelha",119.90,60]
+];
+const HOURS=["08:00","09:00","10:00","11:00","13:00","14:00","15:00","16:00","17:00"];
+let state={service:null,date:null,time:null,pending:null};
+let bookings=JSON.parse(localStorage.getItem("dona_beleza_bookings")||"[]");
+let whatsapp=localStorage.getItem("dona_beleza_whatsapp")||"5562996344257";
+
+const money=n=>Number(n).toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
+const esc=s=>String(s||"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
+function save(){localStorage.setItem("dona_beleza_bookings",JSON.stringify(bookings))}
+function scrollToId(id){document.getElementById(id).scrollIntoView({behavior:"smooth"})}
+function renderServices(){
+let html=SERVICES.map((s,i)=>`<button class="service" onclick="chooseService(${i})"><b>${s[0]}</b><small>${money(s[1])} • ${s[2]} min</small></button>`).join("");
+document.getElementById("servicePicker").innerHTML=html;
+document.getElementById("serviceCards").innerHTML=SERVICES.map(s=>`<div class="card"><h3>${s[0]}</h3><div class="price">${money(s[1])}</div><p>Atendimento Dona Beleza</p></div>`).join("");
+}
+function chooseService(i){state.service=i;document.querySelectorAll(".service").forEach((b,j)=>b.classList.toggle("selected",i===j));document.getElementById("scheduleArea").style.display="block";renderDays();renderTimes()}
+function dateKey(d){return d.toISOString().slice(0,10)}
+function renderDays(){
+let box=document.getElementById("days"),now=new Date(),html="";
+for(let i=0;i<14;i++){let d=new Date(now);d.setHours(12,0,0,0);d.setDate(now.getDate()+i);let key=dateKey(d);let busy=HOURS.every(h=>isBusy(key,h));html+=`<button class="pick ${busy?"off":""} ${state.date===key?"selected":""}" ${busy?"disabled":""} onclick="pickDate('${key}')"><b>${d.toLocaleDateString("pt-BR",{weekday:"short"}).replace(".","")}</b><br>${d.getDate()}/${d.getMonth()+1}</button>`}
+box.innerHTML=html;
+}
+function pickDate(key){state.date=key;state.time=null;renderDays();renderTimes()}
+function isBusy(date,time){return bookings.some(b=>b.date===date&&b.time===time)}
+function renderTimes(){
+let box=document.getElementById("times");if(!state.date){box.innerHTML='<span style="color:var(--muted)">Escolha um dia.</span>';return}
+box.innerHTML=HOURS.map(h=>`<button class="pick ${isBusy(state.date,h)?"off":""} ${state.time===h?"selected":""}" ${isBusy(state.date,h)?"disabled":""} onclick="pickTime('${h}')">${h}</button>`).join("");
+}
+function pickTime(t){state.time=t;renderTimes()}
+function book(){
+if(state.service===null||!state.date||!state.time)return alert("Escolha o procedimento, o dia e o horário.");
+let name=document.getElementById("clientName").value.trim(),phone=document.getElementById("clientPhone").value.trim();
+if(!name||!phone)return alert("Informe seu nome e WhatsApp.");
+if(isBusy(state.date,state.time))return alert("Esse horário acabou de ser reservado. Escolha outro.");
+let s=SERVICES[state.service];
+state.pending={name,phone,obs:document.getElementById("obs").value.trim(),service:s.name,price:s.price,date:state.date,time:state.time};
+bookings.push({...state.pending,id:Date.now()});
+save();renderDays();renderTimes();
+document.getElementById("bookingForm").style.display="none";document.getElementById("confirm").classList.add("show");
+let d=new Date(state.date+"T12:00:00");document.getElementById("confirmText").innerHTML=`${esc(s.name)} — ${money(s.price)}<br><b>${d.toLocaleDateString("pt-BR")} às ${state.time}</b><br>${esc(name)}`;
+}
+function sendWhatsApp(){
+let p=state.pending;if(!p)return;
+let d=new Date(p.date+"T12:00:00");let msg=`Olá, Dona Beleza! Gostaria de confirmar meu agendamento.%0A%0AProcedimento: ${encodeURIComponent(p.service)}%0AData: ${d.toLocaleDateString("pt-BR")}%0AHorário: ${p.time}%0ANome: ${encodeURIComponent(p.name)}%0AWhatsApp: ${encodeURIComponent(p.phone)}${p.obs?"%0AObservação: "+encodeURIComponent(p.obs):""}`;
+let number="5562996344257";if(!number){alert("O número do WhatsApp do salão ainda não foi configurado na Área do salão. O agendamento já foi salvo.");return}
+window.location.href="https://wa.me/"+number+"?text="+msg;
+}
+function openAdmin(){document.getElementById("modal").classList.add("show")}
+function checkAdmin(){if(document.getElementById("adminPass").value!=="1234")return alert("Senha incorreta. Na versão de teste, a senha inicial é 1234.");document.getElementById("modal").classList.remove("show");document.getElementById("admin").classList.add("show");document.getElementById("wa").value=whatsapp;renderAdmin();scrollToId("admin")}
+function saveWA(){whatsapp=document.getElementById("wa").value.trim();localStorage.setItem("dona_beleza_whatsapp",whatsapp);alert("WhatsApp salvo.")}
+function renderAdmin(){
+let box=document.getElementById("adminTable");if(!bookings.length){box.innerHTML="<p style='color:var(--muted)'>Nenhuma reserva neste dispositivo.</p>";return}
+box.innerHTML="<table><tr><th>Data</th><th>Horário</th><th>Cliente</th><th>Serviço</th></tr>"+[...bookings].sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time)).map(b=>`<tr><td>${new Date(b.date+"T12:00:00").toLocaleDateString("pt-BR")}</td><td>${b.time}</td><td>${esc(b.name)}</td><td>${esc(b.service)}</td></tr>`).join("")+"</table>"
+}
+function clearBookings(){if(confirm("Apagar todas as reservas salvas neste dispositivo?")){bookings=[];save();renderAdmin();renderDays();renderTimes()}}
+renderServices();
+</script>
+</body>
+</html>
