@@ -49,65 +49,283 @@ section{max-width:1120px;margin:auto;padding:54px 20px}.title{text-align:center;
 <section id="salao" class="admin"><div class="title"><small>USO DO SALÃO</small><h2>Área do salão</h2><p>Controle de clientes, profissionais e horários.</p></div><div class="admin-login card"><div class="field"><label>Senha do salão</label><input id="adminPass" type="password" placeholder="Digite a senha"></div><button class="btn primary" onclick="loginAdmin()">Entrar no painel</button><div id="adminMsg" class="note"></div></div><div id="adminPanel" class="admin-panel"><div class="admin-actions"><button class="btn secondary" onclick="exportBookings()">Exportar agendamentos</button><button class="btn danger" onclick="clearBookings()">Apagar dados deste aparelho</button></div><div class="table-wrap"><table class="table"><thead><tr><th>Cliente</th><th>WhatsApp</th><th>Profissional</th><th>Data</th><th>Horário</th><th>Procedimentos</th><th>Duração</th></tr></thead><tbody id="bookingTable"></tbody></table></div></div></section>
 </main>
 <footer class="footer"><strong>DONA BELEZA</strong><p>Salão & Estética • Goiânia - GO • dona.beleza.beauty@gmail.com</p></footer>
-<nav class="bottom"><a href="#inicio">⌂<br>Home</a><a href="#procedimentos">✂<br>Procedimentos</a><a href="#profissionais">♙<br>Profissionais</a><a href="#agendamento">□<br>Agendar</a><a href="#salao">⚙<br>Salão</a></nav>
-
-<script>
+<nav class="bottom"><a href="#inicio">⌂<br>Home</a><a href="#procedimentos">✂<br>Procedimentos</a><a href="#profissionais">♙<br>Profissionais</a><a href="#agendamento">□<br>Agendar</a><a href="#salao">⚙<br>Salão</
+</body><script>
 const DATA={
-'Luana':{'Progressiva':180,'Mechas':180,'Escova':40,'Babyliss':60},
-'Cleo':{'Sobrancelha':30,'Design com henna':45,'Depilação':45,'Limpeza de pele':60},
-'Ana Júlia':{'Escova':40,'Tranças':90,'Finalização':60},
-'Ana Clara':{'Alongamento':120,'Manicure':45,'Pedicure':45}
+  'Progressiva':180,
+  'Mechas':180,
+  'Escova':40,
+  'Babyliss':60,
+  'Sobrancelha':30,
+  'Design com henna':45,
+  'Depilação':45,
+  'Limpeza de pele':60,
+  'Tranças':90,
+  'Finalização':60,
+  'Alongamento':120,
+  'Manicure':45,
+  'Pedicure':45
 };
-const bookings=()=>JSON.parse(localStorage.getItem('donaBelezaBookings')||'[]');
-const saveBookings=b=>localStorage.setItem('donaBelezaBookings',JSON.stringify(b));
+
+const bookings=()=>JSON.parse(
+  localStorage.getItem('donaBelezaBookings')||'[]'
+);
+
+const saveBookings=b=>
+  localStorage.setItem(
+    'donaBelezaBookings',
+    JSON.stringify(b)
+  );
 
 function renderProcedures(){
- const p=document.getElementById('professional').value,box=document.getElementById('procedurePicker');
- box.innerHTML=''; if(!p)return;
- Object.keys(DATA[p]).forEach(name=>{
-  const label=document.createElement('label'); label.className='check';
-  label.innerHTML=`<input type="checkbox" value="${name}"> ${name} <b class="price">${DATA[p][name]} min</b>`;
-  box.appendChild(label);
- });
-}
-document.getElementById('professional').addEventListener('change',renderProcedures);
+  const box=document.getElementById('procedurePicker');
+  if(!box)return;
 
-function overlap(aStart,aEnd,bStart,bEnd){return aStart<bEnd&&bStart<aEnd}
+  box.innerHTML='';
+
+  Object.keys(DATA).forEach(name=>{
+    const label=document.createElement('label');
+    label.className='check';
+
+    label.innerHTML=
+      `<input type="checkbox" value="${name}">
+       ${name}
+       <b class="price">${DATA[name]} min</b>`;
+
+    box.appendChild(label);
+  });
+}
+
+function overlap(aStart,aEnd,bStart,bEnd){
+  return aStart<bEnd && bStart<aEnd;
+}
 
 function submitBooking(e){
- e.preventDefault();
- const client=document.getElementById('client').value.trim(),phone=document.getElementById('phone').value.trim();
- const professional=document.getElementById('professional').value,date=document.getElementById('date').value,time=document.getElementById('time').value;
- const checks=[...document.querySelectorAll('#procedurePicker input:checked')],status=document.getElementById('status');
- if(!checks.length){status.className='status error';status.textContent='Escolha pelo menos um procedimento.';return}
- const duration=checks.reduce((s,x)=>s+DATA[professional][x.value],0);
- const [h,m]=time.split(':').map(Number),start=h*60+m,end=start+duration;
- if(start<540||end>1140){status.className='status error';status.textContent='Esse horário ultrapassa o funcionamento do salão (09:00 às 19:00).';return}
- const exists=bookings(),conflict=exists.some(b=>b.date===date&&b.professional===professional&&overlap(start,end,b.start,b.end));
- if(conflict){status.className='status error';status.textContent='Esse horário já entra em conflito com outro atendimento dessa profissional. Escolha outro horário.';return}
- exists.push({id:Date.now(),client,phone,professional,date,time,procedures:checks.map(x=>x.value),duration,start,end});
- saveBookings(exists);
- status.className='status ok';status.textContent=`Agendamento registrado para ${professional} em ${date} às ${time}. Duração: ${duration} minutos.`;
- e.target.reset();document.getElementById('procedurePicker').innerHTML='';renderAdmin();
+  e.preventDefault();
+
+  const client=
+    document.getElementById('client').value.trim();
+
+  const phone=
+    document.getElementById('phone').value.trim();
+
+  const date=
+    document.getElementById('date').value;
+
+  const time=
+    document.getElementById('time').value;
+
+  const checks=[
+    ...document.querySelectorAll(
+      '#procedurePicker input:checked'
+    )
+  ];
+
+  const status=
+    document.getElementById('status');
+
+  if(!checks.length){
+    status.className='status error';
+    status.textContent=
+      'Escolha pelo menos um procedimento.';
+    return;
+  }
+
+  const duration=checks.reduce(
+    (total,item)=>
+      total + DATA[item.value],
+    0
+  );
+
+  const [h,m]=time.split(':').map(Number);
+
+  const start=h*60+m;
+  const end=start+duration;
+
+  if(start<540 || end>1140){
+    status.className='status error';
+    status.textContent=
+      'Esse horário ultrapassa o funcionamento do salão (09:00 às 19:00).';
+    return;
+  }
+
+  /*
+    IMPORTANTE:
+    A cliente não escolhe profissional.
+    O conflito é verificado para o salão inteiro.
+  */
+
+  const exists=bookings();
+
+  const conflict=exists.some(b=>
+    b.date===date &&
+    overlap(
+      start,
+      end,
+      b.start,
+      b.end
+    )
+  );
+
+  if(conflict){
+    status.className='status error';
+    status.textContent=
+      'Esse horário já está ocupado. Escolha outro horário.';
+    return;
+  }
+
+  exists.push({
+    id:Date.now(),
+    client,
+    phone,
+    professional:'Definida pelo salão',
+    date,
+    time,
+    procedures:checks.map(
+      item=>item.value
+    ),
+    duration,
+    start,
+    end
+  });
+
+  saveBookings(exists);
+
+  status.className='status ok';
+
+  status.textContent=
+    `Agendamento confirmado para ${date} às ${time}. `+
+    `Duração: ${duration} minutos.`;
+
+  e.target.reset();
+
+  document.getElementById(
+    'procedurePicker'
+  ).innerHTML='';
+
+  renderProcedures();
+  renderAdmin();
 }
-document.getElementById('bookingForm').addEventListener('submit',submitBooking);
+
+document
+  .getElementById('bookingForm')
+  .addEventListener(
+    'submit',
+    submitBooking
+  );
 
 function loginAdmin(){
- const pass=document.getElementById('adminPass').value,msg=document.getElementById('adminMsg');
- if(pass==='DonaBeleza'){document.getElementById('adminPanel').classList.add('active');msg.textContent='Painel aberto neste aparelho.';renderAdmin()}
- else msg.textContent='Senha incorreta.';
+  const pass=
+    document.getElementById('adminPass').value;
+
+  const msg=
+    document.getElementById('adminMsg');
+
+  if(pass==='DonaBeleza'){
+    document
+      .getElementById('adminPanel')
+      .classList.add('active');
+
+    msg.textContent=
+      'Painel aberto neste aparelho.';
+
+    renderAdmin();
+  }else{
+    msg.textContent=
+      'Senha incorreta.';
+  }
 }
+
 function renderAdmin(){
- const body=document.getElementById('bookingTable'); if(!body)return;
- const arr=bookings().sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));
- body.innerHTML=arr.length?arr.map(b=>`<tr><td>${escapeHtml(b.client)}</td><td>${escapeHtml(b.phone)}</td><td>${escapeHtml(b.professional)}</td><td>${b.date}</td><td>${b.time}</td><td>${b.procedures.join(', ')}</td><td>${b.duration} min</td></tr>`).join(''):'<tr><td colspan="7">Nenhum agendamento salvo neste aparelho.</td></tr>';
+  const body=
+    document.getElementById('bookingTable');
+
+  if(!body)return;
+
+  const arr=bookings().sort(
+    (a,b)=>
+      (a.date+a.time)
+      .localeCompare(
+        b.date+b.time
+      )
+  );
+
+  body.innerHTML=arr.length
+    ?arr.map(b=>`
+      <tr>
+        <td>${escapeHtml(b.client)}</td>
+        <td>${escapeHtml(b.phone)}</td>
+        <td>Definida pelo salão</td>
+        <td>${b.date}</td>
+        <td>${b.time}</td>
+        <td>${b.procedures.join(', ')}</td>
+        <td>${b.duration} min</td>
+      </tr>
+    `).join('')
+    :`
+      <tr>
+        <td colspan="7">
+          Nenhum agendamento salvo neste aparelho.
+        </td>
+      </tr>
+    `;
 }
-function escapeHtml(s){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+
+function escapeHtml(s){
+  return String(s).replace(
+    /[&<>'"]/g,
+    c=>({
+      '&':'&amp;',
+      '<':'&lt;',
+      '>':'&gt;',
+      "'":'&#39;',
+      '"':'&quot;'
+    }[c])
+  );
+}
+
 function exportBookings(){
- const blob=new Blob([JSON.stringify(bookings(),null,2)],{type:'application/json'}),a=document.createElement('a');
- a.href=URL.createObjectURL(blob);a.download='agendamentos-dona-beleza.json';a.click();URL.revokeObjectURL(a.href);
+  const blob=new Blob(
+    [
+      JSON.stringify(
+        bookings(),
+        null,
+        2
+      )
+    ],
+    {
+      type:'application/json'
+    }
+  );
+
+  const a=
+    document.createElement('a');
+
+  a.href=
+    URL.createObjectURL(blob);
+
+  a.download=
+    'agendamentos-dona-beleza.json';
+
+  a.click();
+
+  URL.revokeObjectURL(a.href);
 }
-function clearBookings(){if(confirm('Apagar os agendamentos salvos neste aparelho?')){localStorage.removeItem('donaBelezaBookings');renderAdmin()}}
+
+function clearBookings(){
+  if(
+    confirm(
+      'Apagar os agendamentos salvos neste aparelho?'
+    )
+  ){
+    localStorage.removeItem(
+      'donaBelezaBookings'
+    );
+
+    renderAdmin();
+  }
+}
+
+renderProcedures();
 </script>
-</body>
 </html>
