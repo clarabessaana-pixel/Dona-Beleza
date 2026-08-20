@@ -3,365 +3,350 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#4a2f25">
+<meta name="theme-color" content="#4b3025">
 <title>Dona Beleza - Gestão</title>
 
 <style>
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f7eee7;
-  color:#38261f;
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:#f5eee9;
+color:#35251e;
 }
 
-.app{
-  min-height:100vh;
-  background:linear-gradient(
-    #3f271f 0 220px,
-    #f7eee7 220px
-  );
-}
-
-.top{
-  padding:35px 20px 25px;
-  color:white;
+header{
+background:#4b3025;
+color:white;
+padding:28px 18px;
 }
 
 .container{
-  width:100%;
-  max-width:900px;
-  margin:auto;
-  padding:0 16px 30px;
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
+max-width:850px;
+margin:auto;
+padding:0 16px 30px;
 }
 
 .logo{
-  width:50px;
-  height:50px;
-  border-radius:15px;
-  background:#d8b79f;
-  color:#4a2f25;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:bold;
-  font-size:20px;
+display:flex;
+align-items:center;
+gap:12px;
 }
 
-.brand h1{
-  margin:0;
-  font-family:Georgia,serif;
-  font-weight:normal;
+.logo-icon{
+width:48px;
+height:48px;
+border-radius:14px;
+background:#d9bca8;
+color:#4b3025;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:bold;
 }
 
-.brand small{
-  opacity:.75;
+.logo h1{
+font-family:Georgia,serif;
+font-size:25px;
+font-weight:normal;
+margin:0;
+}
+
+.logo small{
+opacity:.75;
 }
 
 .page{
-  display:none;
+display:none;
 }
 
 .page.active{
-  display:block;
+display:block;
 }
 
 .card{
-  background:#fffaf6;
-  border:1px solid #dfcfc3;
-  border-radius:22px;
-  padding:18px;
-  margin-bottom:14px;
-  box-shadow:0 5px 18px rgba(50,30,20,.08);
-}
-
-.hero h2{
-  margin:0 0 5px;
-  font-family:Georgia,serif;
-  font-weight:normal;
-}
-
-.muted{
-  color:#806d63;
-  font-size:14px;
-}
-
-.kpis{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-  margin-top:16px;
-}
-
-.kpi{
-  background:#f7eee7;
-  border:1px solid #dfcfc3;
-  border-radius:15px;
-  padding:13px;
-}
-
-.kpi span{
-  display:block;
-  color:#806d63;
-  font-size:12px;
-}
-
-.kpi strong{
-  display:block;
-  margin-top:5px;
-  font-size:18px;
-}
-
-.menu{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:11px;
-}
-
-.menu button{
-  border:1px solid #dfcfc3;
-  background:#fffaf6;
-  border-radius:18px;
-  padding:16px;
-  min-height:90px;
-  text-align:left;
-  font-size:15px;
-  font-weight:bold;
-  color:#38261f;
-}
-
-.icon{
-  display:block;
-  width:36px;
-  height:36px;
-  background:#ead8ca;
-  border-radius:11px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  margin-bottom:9px;
-  font-size:19px;
-}
-
-.back{
-  border:0;
-  background:none;
-  color:#6a4535;
-  font-weight:bold;
-  font-size:15px;
-  padding:0 0 15px;
+background:#fffaf7;
+border:1px solid #dfcec1;
+border-radius:20px;
+padding:18px;
+margin-top:16px;
+box-shadow:0 5px 18px rgba(75,48,37,.08);
 }
 
 h2{
-  font-family:Georgia,serif;
-  font-weight:normal;
-  margin:0 0 8px;
+font-family:Georgia,serif;
+font-weight:normal;
+margin:0 0 8px;
 }
 
-form{
-  display:grid;
-  gap:9px;
+p{
+color:#79675d;
+font-size:14px;
+}
+
+.menu{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+margin-top:16px;
+}
+
+.menu a{
+display:block;
+text-decoration:none;
+color:#35251e;
+background:#fffaf7;
+border:1px solid #dfcec1;
+border-radius:17px;
+padding:16px;
+min-height:85px;
+font-weight:bold;
+}
+
+.icon{
+display:flex;
+align-items:center;
+justify-content:center;
+width:36px;
+height:36px;
+background:#ead9cd;
+border-radius:10px;
+margin-bottom:8px;
+font-size:19px;
+}
+
+.kpis{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:9px;
+margin-top:15px;
+}
+
+.kpi{
+background:#f5eee9;
+border:1px solid #dfcec1;
+border-radius:14px;
+padding:12px;
+}
+
+.kpi small{
+color:#79675d;
+}
+
+.kpi strong{
+display:block;
+margin-top:5px;
+font-size:18px;
+}
+
+.back{
+display:inline-block;
+text-decoration:none;
+color:#6b4535;
+font-weight:bold;
+margin-bottom:15px;
 }
 
 label{
-  color:#806d63;
-  font-size:12px;
-  font-weight:bold;
+display:block;
+font-size:12px;
+font-weight:bold;
+color:#79675d;
+margin-top:9px;
 }
 
-input,select{
-  width:100%;
-  padding:13px;
-  border:1px solid #dfcfc3;
-  border-radius:12px;
-  background:white;
-  font-size:16px;
-  color:#38261f;
+input,
+select{
+width:100%;
+padding:13px;
+border:1px solid #d8c5b8;
+border-radius:11px;
+background:white;
+font-size:16px;
+color:#35251e;
 }
 
-.row{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:9px;
+button{
+width:100%;
+border:0;
+border-radius:11px;
+background:#6b4535;
+color:white;
+padding:14px;
+font-weight:bold;
+font-size:15px;
+margin-top:12px;
 }
 
-.primary{
-  border:0;
-  background:#6a4535;
-  color:white;
-  border-radius:12px;
-  padding:14px;
-  font-size:15px;
-  font-weight:bold;
-}
-
-.list{
-  display:grid;
-  gap:9px;
-  margin-top:15px;
+.lista{
+display:grid;
+gap:9px;
+margin-top:15px;
 }
 
 .item{
-  background:white;
-  border:1px solid #dfcfc3;
-  border-radius:14px;
-  padding:13px;
+background:white;
+border:1px solid #dfcec1;
+border-radius:13px;
+padding:13px;
 }
 
-.item b{
-  display:block;
+.item strong{
+display:block;
 }
 
-.item span{
-  display:block;
-  margin-top:5px;
-  color:#806d63;
-  font-size:13px;
+.item small{
+display:block;
+color:#79675d;
+margin-top:5px;
 }
 
 .badge{
-  display:inline-block;
-  background:#ead8ca;
-  color:#6a4535;
-  border-radius:20px;
-  padding:5px 8px;
-  font-size:11px;
-  font-weight:bold;
+display:inline-block;
+background:#ead9cd;
+color:#6b4535;
+border-radius:20px;
+padding:5px 9px;
+font-size:11px;
+font-weight:bold;
 }
 
 .empty{
-  text-align:center;
-  padding:20px;
-  border:1px dashed #dfcfc3;
-  border-radius:14px;
-  color:#806d63;
+text-align:center;
+padding:20px;
+color:#79675d;
+border:1px dashed #dfcec1;
+border-radius:13px;
 }
 
-.footer{
-  text-align:center;
-  color:#9b897f;
-  font-size:11px;
-  padding:20px;
+@media(min-width:650px){
+
+.menu{
+grid-template-columns:repeat(3,1fr);
 }
 
-@media(min-width:700px){
-  .menu{
-    grid-template-columns:repeat(3,1fr);
-  }
+.kpis{
+grid-template-columns:repeat(4,1fr);
+}
 
-  .kpis{
-    grid-template-columns:repeat(4,1fr);
-  }
 }
 </style>
 </head>
 
 <body>
 
-<div class="app">
+<header>
 
-<header class="top">
 <div class="container">
 
-<div class="brand">
-<div class="logo">DB</div>
+<div class="logo">
+
+<div class="logo-icon">
+DB
+</div>
 
 <div>
+
 <h1>Dona Beleza</h1>
-<small>Gestão do salão</small>
-</div>
+
+<small>
+Gestão do salão
+</small>
 
 </div>
 
 </div>
+
+</div>
+
 </header>
+
 
 <main class="container">
 
+
 <!-- RESUMO -->
 
-<section id="home" class="page active">
+<section id="inicio" class="page active">
 
-<div class="card hero">
+<div class="card">
 
-<h2>Olá, administradora 🤎</h2>
+<h2>
+Resumo
+</h2>
 
-<p class="muted">
-Controle profissionais, atendimentos,
-comissões, despesas e investimentos.
+<p>
+Controle do salão em um só lugar.
 </p>
 
 <div class="kpis">
 
 <div class="kpi">
-<span>Faturamento</span>
-<strong id="faturamento">R$ 0,00</strong>
+<small>Faturamento</small>
+<strong id="faturamento">
+R$ 0,00
+</strong>
 </div>
 
 <div class="kpi">
-<span>Comissões</span>
-<strong id="comissoes">R$ 0,00</strong>
+<small>Comissões</small>
+<strong id="comissoes">
+R$ 0,00
+</strong>
 </div>
 
 <div class="kpi">
-<span>Despesas</span>
-<strong id="despesasTotal">R$ 0,00</strong>
+<small>Despesas</small>
+<strong id="despesasTotal">
+R$ 0,00
+</strong>
 </div>
 
 <div class="kpi">
-<span>Investimentos</span>
-<strong id="investimentosTotal">R$ 0,00</strong>
+<small>Investimentos</small>
+<strong id="investimentosTotal">
+R$ 0,00
+</strong>
 </div>
 
 </div>
+
 </div>
 
 
 <div class="menu">
 
-<button onclick="abrir('profissionais')">
+<a href="#profissionais">
 <span class="icon">👩‍💼</span>
 Profissionais
-</button>
+</a>
 
-<button onclick="abrir('relatorios')">
+<a href="#relatorios">
 <span class="icon">📊</span>
 Relatórios
-</button>
+</a>
 
-<button onclick="abrir('atendimentos')">
+<a href="#atendimentos">
 <span class="icon">✂️</span>
 Atendimentos
-</button>
+</a>
 
-<button onclick="abrir('fechamento')">
+<a href="#fechamento">
 <span class="icon">📆</span>
 Fechamento 15 dias
-</button>
+</a>
 
-<button onclick="abrir('despesas')">
+<a href="#despesas">
 <span class="icon">🧾</span>
 Despesas
-</button>
+</a>
 
-<button onclick="abrir('investimentos')">
+<a href="#investimentos">
 <span class="icon">🏗️</span>
 Investimentos
-</button>
+</a>
 
-</div>
-
-<div class="footer">
-Dona Beleza • Gestão
 </div>
 
 </section>
@@ -373,129 +358,50 @@ Dona Beleza • Gestão
 
 <div class="card">
 
-<button class="back" onclick="abrir('home')">
+<a href="#inicio" class="back">
 ← Voltar
-</button>
+</a>
 
-<h2>Profissionais</h2>
+<h2>
+Profissionais
+</h2>
 
-<p class="muted">
-Cadastre as profissionais e a porcentagem de comissão.
+<p>
+Profissionais cadastradas no salão.
 </p>
 
-<form id="formProfissional">
 
-<label>Nome da profissional</label>
+<div class="lista">
 
-<input
-id="nomeProfissional"
-placeholder="Ex.: Maria"
-required
->
-
-<label>Comissão (%)</label>
-
-<input
-id="comissaoProfissional"
-type="number"
-min="0"
-max="100"
-step="0.01"
-placeholder="Ex.: 50"
-required
->
-
-<button class="primary">
-Cadastrar profissional
-</button>
-
-</form>
-
-<div id="listaProfissionais" class="list"></div>
-
+<div class="item">
+<strong>Luan</strong>
+<small>
+Profissional
+</small>
 </div>
 
-</section>
-
-
-<!-- ATENDIMENTOS -->
-
-<section id="atendimentos" class="page">
-
-<div class="card">
-
-<button class="back" onclick="abrir('home')">
-← Voltar
-</button>
-
-<h2>Atendimentos</h2>
-
-<p class="muted">
-Registre qual profissional realizou cada atendimento.
-</p>
-
-<form id="formAtendimento">
-
-<label>Profissional</label>
-
-<select id="profissionalAtendimento" required>
-<option value="">Selecione</option>
-</select>
-
-<label>Cliente</label>
-
-<input
-id="clienteAtendimento"
-placeholder="Nome da cliente"
-required
->
-
-<label>Serviço</label>
-
-<input
-id="servicoAtendimento"
-placeholder="Ex.: Escova"
-required
->
-
-<div class="row">
-
-<div>
-
-<label>Valor</label>
-
-<input
-id="valorAtendimento"
-type="number"
-step="0.01"
-min="0"
-placeholder="0,00"
-required
->
-
+<div class="item">
+<strong>Ana Clara</strong>
+<small>
+Profissional
+</small>
 </div>
 
-<div>
+<div class="item">
+<strong>Cleo</strong>
+<small>
+Profissional
+</small>
+</div>
 
-<label>Data</label>
-
-<input
-id="dataAtendimento"
-type="date"
-required
->
-
+<div class="item">
+<strong>Ana Júlia</strong>
+<small>
+Profissional
+</small>
 </div>
 
 </div>
-
-<button class="primary">
-Registrar atendimento
-</button>
-
-</form>
-
-<div id="listaAtendimentos" class="list"></div>
 
 </div>
 
@@ -508,17 +414,122 @@ Registrar atendimento
 
 <div class="card">
 
-<button class="back" onclick="abrir('home')">
+<a href="#inicio" class="back">
 ← Voltar
-</button>
+</a>
 
-<h2>Relatórios</h2>
+<h2>
+Relatórios
+</h2>
 
-<p class="muted">
-Resultado individual de cada profissional.
+<p>
+Acompanhe o desempenho de cada profissional.
 </p>
 
-<div id="listaRelatorios" class="list"></div>
+<div id="listaRelatorios" class="lista">
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ATENDIMENTOS -->
+
+<section id="atendimentos" class="page">
+
+<div class="card">
+
+<a href="#inicio" class="back">
+← Voltar
+</a>
+
+<h2>
+Atendimentos
+</h2>
+
+<p>
+Registre o cliente, o serviço e a profissional responsável.
+</p>
+
+
+<form id="formAtendimento">
+
+<label>
+Nome da cliente
+</label>
+
+<input
+id="cliente"
+type="text"
+placeholder="Digite o nome da cliente"
+required
+>
+
+
+<label>
+Profissional que atendeu
+</label>
+
+<select id="profissional" required>
+
+<option value="">
+Selecione a profissional
+</option>
+
+<option value="Luan">
+Luan
+</option>
+
+<option value="Ana Clara">
+Ana Clara
+</option>
+
+<option value="Cleo">
+Cleo
+</option>
+
+<option value="Ana Júlia">
+Ana Júlia
+</option>
+
+</select>
+
+
+<label>
+Serviço realizado
+</label>
+
+<input
+id="servico"
+type="text"
+placeholder="Ex.: Escova"
+required
+>
+
+
+<label>
+Valor do atendimento
+</label>
+
+<input
+id="valor"
+type="number"
+step="0.01"
+placeholder="0,00"
+required
+>
+
+
+<button type="submit">
+Registrar atendimento
+</button>
+
+</form>
+
+
+<div id="listaAtendimentos" class="lista">
+</div>
 
 </div>
 
@@ -531,17 +542,21 @@ Resultado individual de cada profissional.
 
 <div class="card">
 
-<button class="back" onclick="abrir('home')">
+<a href="#inicio" class="back">
 ← Voltar
-</button>
+</a>
 
-<h2>Fechamento de 15 dias</h2>
+<h2>
+Fechamento de 15 dias
+</h2>
 
-<p class="muted">
-Controle das comissões e pagamentos das profissionais.
+<p>
+Controle das comissões de cada profissional.
 </p>
 
-<div id="listaFechamento" class="list"></div>
+
+<div id="listaFechamento" class="lista">
+</div>
 
 </div>
 
@@ -554,15 +569,19 @@ Controle das comissões e pagamentos das profissionais.
 
 <div class="card">
 
-<button class="back" onclick="abrir('home')">
+<a href="#inicio" class="back">
 ← Voltar
-</button>
+</a>
 
-<h2>Despesas</h2>
+<h2>
+Despesas
+</h2>
 
 <form id="formDespesa">
 
-<label>Descrição</label>
+<label>
+Descrição
+</label>
 
 <input
 id="descricaoDespesa"
@@ -570,31 +589,29 @@ placeholder="Ex.: Produtos"
 required
 >
 
-<label>Valor</label>
+
+<label>
+Valor
+</label>
 
 <input
 id="valorDespesa"
 type="number"
 step="0.01"
-min="0"
+placeholder="0,00"
 required
 >
 
-<label>Data</label>
 
-<input
-id="dataDespesa"
-type="date"
-required
->
-
-<button class="primary">
+<button type="submit">
 Adicionar despesa
 </button>
 
 </form>
 
-<div id="listaDespesas" class="list"></div>
+
+<div id="listaDespesas" class="lista">
+</div>
 
 </div>
 
@@ -607,19 +624,23 @@ Adicionar despesa
 
 <div class="card">
 
-<button class="back" onclick="abrir('home')">
+<a href="#inicio" class="back">
 ← Voltar
-</button>
+</a>
 
-<h2>Investimentos</h2>
+<h2>
+Investimentos
+</h2>
 
-<p class="muted">
+<p>
 Controle separado dos investimentos do salão.
 </p>
 
 <form id="formInvestimento">
 
-<label>Descrição</label>
+<label>
+Descrição
+</label>
 
 <input
 id="descricaoInvestimento"
@@ -627,69 +648,54 @@ placeholder="Ex.: Equipamento"
 required
 >
 
-<label>Valor</label>
+
+<label>
+Valor
+</label>
 
 <input
 id="valorInvestimento"
 type="number"
 step="0.01"
-min="0"
+placeholder="0,00"
 required
 >
 
-<label>Data</label>
 
-<input
-id="dataInvestimento"
-type="date"
-required
->
-
-<button class="primary">
+<button type="submit">
 Adicionar investimento
 </button>
 
 </form>
 
-<div id="listaInvestimentos" class="list"></div>
+
+<div id="listaInvestimentos" class="lista">
+</div>
 
 </div>
 
 </section>
 
-</main>
 
-</div>
+</main>
 
 
 <script>
 
-const CHAVE = "dona_beleza_gestao";
+const CHAVE =
+"dona_beleza_gestao_final";
 
-let banco =
+
+let dados =
 JSON.parse(
 localStorage.getItem(CHAVE)
 ) || {
 
-profissionais:[],
 atendimentos:[],
 despesas:[],
-investimentos:[],
-pagamentos:[]
+investimentos:[]
 
 };
-
-
-function salvar(){
-
-localStorage.setItem(
-CHAVE,
-JSON.stringify(banco)
-);
-
-renderizar();
-
-}
 
 
 function dinheiro(valor){
@@ -706,22 +712,12 @@ currency:"BRL"
 }
 
 
-function abrir(pagina){
+function salvar(){
 
-document
-.querySelectorAll(".page")
-.forEach(
-p=>p.classList.remove("active")
+localStorage.setItem(
+CHAVE,
+JSON.stringify(dados)
 );
-
-document
-.getElementById(pagina)
-.classList.add("active");
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
 
 renderizar();
 
@@ -731,472 +727,390 @@ renderizar();
 function escapar(texto){
 
 return String(texto)
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
 
 }
 
 
-/* PROFISSIONAIS */
-
-document
-.getElementById("formProfissional")
-.onsubmit=function(e){
-
-e.preventDefault();
-
-banco.profissionais.push({
-
-id:Date.now(),
-
-nome:
-document
-.getElementById("nomeProfissional")
-.value
-.trim(),
-
-comissao:
-Number(
-document
-.getElementById("comissaoProfissional")
-.value
-)
-
-});
-
-e.target.reset();
-
-salvar();
-
-};
-
-
-/* ATENDIMENTOS */
+/* ATENDIMENTO */
 
 document
 .getElementById("formAtendimento")
-.onsubmit=function(e){
+.addEventListener(
+"submit",
+function(event){
 
-e.preventDefault();
+event.preventDefault();
 
-const profissional=
-banco.profissionais.find(
-p=>
-p.id ==
+
+const cliente =
+document
+.getElementById("cliente")
+.value
+.trim();
+
+
+const profissional =
+document
+.getElementById("profissional")
+.value;
+
+
+const servico =
+document
+.getElementById("servico")
+.value
+.trim();
+
+
+const valor =
 Number(
 document
-.getElementById("profissionalAtendimento")
-.value
-)
-);
-
-if(!profissional){
-
-alert(
-"Cadastre uma profissional primeiro."
-);
-
-return;
-
-}
-
-const valor=
-Number(
-document
-.getElementById("valorAtendimento")
+.getElementById("valor")
 .value
 );
 
-banco.atendimentos.push({
+
+dados.atendimentos.push({
 
 id:Date.now(),
 
-profissionalId:
-profissional.id,
+cliente:cliente,
 
-profissional:
-profissional.nome,
+profissional:profissional,
 
-cliente:
-document
-.getElementById("clienteAtendimento")
-.value
-.trim(),
+servico:servico,
 
-servico:
-document
-.getElementById("servicoAtendimento")
-.value
-.trim(),
-
-valor:valor,
-
-comissao:
-valor *
-profissional.comissao /
-100,
-
-data:
-document
-.getElementById("dataAtendimento")
-.value
+valor:valor
 
 });
 
-e.target.reset();
+
+event.target.reset();
 
 salvar();
 
-};
+
+document
+.getElementById("inicio")
+.scrollIntoView();
+
+location.hash="atendimentos";
+
+}
+
+);
 
 
 /* DESPESAS */
 
 document
 .getElementById("formDespesa")
-.onsubmit=function(e){
+.addEventListener(
+"submit",
+function(event){
 
-e.preventDefault();
+event.preventDefault();
 
-banco.despesas.push({
 
-id:Date.now(),
-
-descricao:
+const descricao =
 document
 .getElementById("descricaoDespesa")
 .value
-.trim(),
+.trim();
 
-valor:
+
+const valor =
 Number(
 document
 .getElementById("valorDespesa")
 .value
-),
+);
 
-data:
-document
-.getElementById("dataDespesa")
-.value
+
+dados.despesas.push({
+
+id:Date.now(),
+
+descricao:descricao,
+
+valor:valor
 
 });
 
-e.target.reset();
+
+event.target.reset();
 
 salvar();
 
-};
+}
+
+);
 
 
 /* INVESTIMENTOS */
 
 document
 .getElementById("formInvestimento")
-.onsubmit=function(e){
+.addEventListener(
+"submit",
+function(event){
 
-e.preventDefault();
+event.preventDefault();
 
-banco.investimentos.push({
 
-id:Date.now(),
-
-descricao:
+const descricao =
 document
 .getElementById("descricaoInvestimento")
 .value
-.trim(),
+.trim();
 
-valor:
+
+const valor =
 Number(
 document
 .getElementById("valorInvestimento")
 .value
-),
-
-data:
-document
-.getElementById("dataInvestimento")
-.value
-
-});
-
-e.target.reset();
-
-salvar();
-
-};
+);
 
 
-/* PAGAMENTO */
-
-function pagar(id,valor){
-
-if(
-confirm(
-"Confirmar pagamento de "+
-dinheiro(valor)+"?"
-)
-){
-
-banco.pagamentos.push({
+dados.investimentos.push({
 
 id:Date.now(),
 
-profissionalId:id,
+descricao:descricao,
 
-valor:valor,
-
-data:new Date()
-.toISOString()
-.slice(0,10)
+valor:valor
 
 });
+
+
+event.target.reset();
 
 salvar();
 
 }
 
+);
+
+
+/* RELATÓRIOS */
+
+function gerarRelatorio(nome){
+
+const lista =
+dados.atendimentos
+.filter(
+item =>
+item.profissional === nome
+);
+
+
+const faturamento =
+lista.reduce(
+(total,item) =>
+total + item.valor,
+0
+);
+
+
+return `
+
+<div class="item">
+
+<strong>
+${escapar(nome)}
+</strong>
+
+<small>
+Atendimentos:
+${lista.length}
+<br>
+
+Faturamento:
+${dinheiro(faturamento)}
+</small>
+
+</div>
+
+`;
+
 }
 
 
-/* RENDERIZAR */
+/* RENDERIZAÇÃO */
 
 function renderizar(){
 
-const faturamento=
-banco.atendimentos
+
+const faturamento =
+dados.atendimentos
 .reduce(
-(total,a)=>
-total + a.valor,
+(total,item) =>
+total + item.valor,
 0
 );
 
-const comissoes=
-banco.atendimentos
+
+const despesas =
+dados.despesas
 .reduce(
-(total,a)=>
-total + a.comissao,
+(total,item) =>
+total + item.valor,
 0
 );
 
-const despesas=
-banco.despesas
-.reduce(
-(total,d)=>
-total + d.valor,
-0
-);
 
-const investimentos=
-banco.investimentos
+const investimentos =
+dados.investimentos
 .reduce(
-(total,i)=>
-total + i.valor,
+(total,item) =>
+total + item.valor,
 0
 );
 
 
 document
 .getElementById("faturamento")
-.textContent=
+.textContent =
 dinheiro(faturamento);
 
-document
-.getElementById("comissoes")
-.textContent=
-dinheiro(comissoes);
 
 document
 .getElementById("despesasTotal")
-.textContent=
+.textContent =
 dinheiro(despesas);
+
 
 document
 .getElementById("investimentosTotal")
-.textContent=
+.textContent =
 dinheiro(investimentos);
 
 
-/* SELECT */
-
-const select=
 document
-.getElementById(
-"profissionalAtendimento"
-);
+.getElementById("comissoes")
+.textContent =
+"R$ 0,00";
 
-select.innerHTML=
-'<option value="">Selecione</option>'+
 
-banco.profissionais
-.map(
-p=>
-`<option value="${p.id}">
-${escapar(p.nome)} • ${p.comissao}%
-</option>`
-)
+const profissionais = [
+
+"Luan",
+"Ana Clara",
+"Cleo",
+"Ana Júlia"
+
+];
+
+
+document
+.getElementById("listaRelatorios")
+.innerHTML =
+profissionais
+.map(gerarRelatorio)
 .join("");
-
-
-/* PROFISSIONAIS */
-
-document
-.getElementById("listaProfissionais")
-.innerHTML=
-banco.profissionais
-.map(p=>{
-
-const atendimentos=
-banco.atendimentos
-.filter(
-a=>a.profissionalId===p.id
-);
-
-const faturou=
-atendimentos
-.reduce(
-(t,a)=>t+a.valor,
-0
-);
-
-const comissao=
-atendimentos
-.reduce(
-(t,a)=>t+a.comissao,
-0
-);
-
-return `
-
-<div class="item">
-
-<b>
-${escapar(p.nome)}
-</b>
-
-<span>
-
-<span class="badge">
-${p.comissao}% comissão
-</span>
-
-• ${atendimentos.length}
-atendimentos
-
-• Faturamento:
-${dinheiro(faturou)}
-
-• Comissão:
-${dinheiro(comissao)}
-
-</span>
-
-</div>
-
-`;
-
-})
-.join("")
-||
-'<div class="empty">
-Nenhuma profissional cadastrada.
-</div>';
 
 
 /* ATENDIMENTOS */
 
+const listaAtendimentos =
 document
-.getElementById("listaAtendimentos")
-.innerHTML=
-[...banco.atendimentos]
+.getElementById(
+"listaAtendimentos"
+);
+
+
+if(
+dados.atendimentos.length === 0
+){
+
+listaAtendimentos.innerHTML =
+`
+<div class="empty">
+Nenhum atendimento registrado.
+</div>
+`;
+
+}else{
+
+listaAtendimentos.innerHTML =
+[...dados.atendimentos]
 .reverse()
-.map(a=>`
+.map(
+item => `
 
 <div class="item">
 
-<b>
-${escapar(a.servico)}
-•
-${dinheiro(a.valor)}
-</b>
+<strong>
+${escapar(item.servico)}
+—
+${dinheiro(item.valor)}
+</strong>
 
-<span>
+<small>
 
 Cliente:
-${escapar(a.cliente)}
+${escapar(item.cliente)}
 
 <br>
 
 Profissional:
-${escapar(a.profissional)}
+${escapar(item.profissional)}
 
-<br>
-
-Data:
-${a.data}
-
-<br>
-
-Comissão:
-${dinheiro(a.comissao)}
-
-</span>
+</small>
 
 </div>
 
-`)
-.join("")
-||
-'<div class="empty">
-Nenhum atendimento registrado.
-</div>';
+`
+)
+.join("");
+
+}
 
 
-/* RELATÓRIOS */
+/* FECHAMENTO */
 
 document
-.getElementById("listaRelatorios")
-.innerHTML=
-banco.profissionais
-.map(p=>{
+.getElementById("listaFechamento")
+.innerHTML =
+profissionais
+.map(
+nome => {
 
-const lista=
-banco.atendimentos
+const atendimentos =
+dados.atendimentos
 .filter(
-a=>a.profissionalId===p.id
+item =>
+item.profissional === nome
 );
 
-const faturamento=
-lista.reduce(
-(t,a)=>t+a.valor,
+
+const faturamento =
+atendimentos
+.reduce(
+(total,item) =>
+total + item.valor,
 0
 );
 
-const comissao=
-lista.reduce(
-(t,a)=>t+a.comissao,
-0
-);
-
-const salao=
-faturamento-comissao;
 
 return `
 
 <div class="item">
 
-<b>
-${escapar(p.nome)}
-</b>
+<strong>
+${escapar(nome)}
+</strong>
 
-<span>
+<small>
 
 Atendimentos:
-${lista.length}
+${atendimentos.length}
 
 <br>
 
@@ -1206,203 +1120,107 @@ ${dinheiro(faturamento)}
 <br>
 
 Comissão:
-${dinheiro(comissao)}
+A definir
 
-<br>
-
-Parte do salão:
-${dinheiro(salao)}
-
-</span>
+</small>
 
 </div>
 
 `;
-
-})
-.join("")
-||
-'<div class="empty">
-Cadastre profissionais para gerar relatórios.
-</div>';
-
-
-/* FECHAMENTO */
-
-document
-.getElementById("listaFechamento")
-.innerHTML=
-banco.profissionais
-.map(p=>{
-
-const comissao=
-banco.atendimentos
-.filter(
-a=>a.profissionalId===p.id
-)
-.reduce(
-(t,a)=>t+a.comissao,
-0
-);
-
-const pago=
-banco.pagamentos
-.filter(
-x=>x.profissionalId===p.id
-)
-.reduce(
-(t,x)=>t+x.valor,
-0
-);
-
-const restante=
-Math.max(
-0,
-comissao-pago
-);
-
-return `
-
-<div class="item">
-
-<b>
-${escapar(p.nome)}
-</b>
-
-<span>
-
-Comissão:
-${dinheiro(comissao)}
-
-<br>
-
-Já pago:
-${dinheiro(pago)}
-
-<br>
-
-<strong>
-A pagar:
-${dinheiro(restante)}
-</strong>
-
-</span>
-
-${
-restante > 0
-
-?
-
-`<button
-class="primary"
-style="margin-top:10px"
-onclick="pagar(${p.id},${restante})"
->
-Marcar pagamento
-</button>`
-
-:
-
-`<span class="badge">
-Em dia
-</span>`
 
 }
-
-</div>
-
-`;
-
-})
-.join("")
-||
-'<div class="empty">
-Nenhuma profissional cadastrada.
-</div>';
+)
+.join("");
 
 
 /* DESPESAS */
 
+if(
+dados.despesas.length === 0
+){
+
 document
 .getElementById("listaDespesas")
-.innerHTML=
-[...banco.despesas]
-.reverse()
-.map(d=>`
-
-<div class="item">
-
-<b>
-${escapar(d.descricao)}
-</b>
-
-<span>
-${d.data}
-•
-${dinheiro(d.valor)}
-</span>
-
-</div>
-
-`)
-.join("")
-||
-'<div class="empty">
+.innerHTML =
+`
+<div class="empty">
 Nenhuma despesa registrada.
-</div>';
+</div>
+`;
 
-
-/* INVESTIMENTOS */
+}else{
 
 document
-.getElementById("listaInvestimentos")
-.innerHTML=
-[...banco.investimentos]
+.getElementById("listaDespesas")
+.innerHTML =
+[...dados.despesas]
 .reverse()
-.map(i=>`
+.map(
+item => `
 
 <div class="item">
 
-<b>
-${escapar(i.descricao)}
-</b>
+<strong>
+${escapar(item.descricao)}
+</strong>
 
-<span>
-${i.data}
-•
-${dinheiro(i.valor)}
-</span>
+<small>
+${dinheiro(item.valor)}
+</small>
 
 </div>
 
-`)
-.join("")
-||
-'<div class="empty">
-Nenhum investimento registrado.
-</div>';
+`
+)
+.join("");
 
 }
 
 
-/* DATA DE HOJE */
+/* INVESTIMENTOS */
 
-const hoje=
-new Date()
-.toISOString()
-.slice(0,10);
-
-document
-.getElementById("dataAtendimento")
-.value=hoje;
+if(
+dados.investimentos.length === 0
+){
 
 document
-.getElementById("dataDespesa")
-.value=hoje;
+.getElementById("listaInvestimentos")
+.innerHTML =
+`
+<div class="empty">
+Nenhum investimento registrado.
+</div>
+`;
+
+}else{
 
 document
-.getElementById("dataInvestimento")
-.value=hoje;
+.getElementById("listaInvestimentos")
+.innerHTML =
+[...dados.investimentos]
+.reverse()
+.map(
+item => `
+
+<div class="item">
+
+<strong>
+${escapar(item.descricao)}
+</strong>
+
+<small>
+${dinheiro(item.valor)}
+</small>
+
+</div>
+
+`
+)
+.join("");
+
+}
+
+}
 
 
 /* INICIAR */
