@@ -1,36 +1,1591 @@
-DB
-DONA BELEZA
-SALÃO & ESTÉTICA
-Valores
-Profissionais
-Agendar
-BELEZA • CUIDADO • ESTILO
-Seu momento de beleza começa aqui.
-Procedimentos, profissionais e agendamento organizados em um só lugar.
-Agendar horário
-Ver valores
-DB
-Dona Beleza
-Salão & Estética
-Valores
-Procedimentos avulsos com valor individual.
-Combos
-As promoções continuam como antes.
-Profissionais
-Conheça quem cuida de cada procedimento.
-Luana
-Progressiva • Mechas • Escova • Baby liss
-Cleo
-Sobrancelha • Depilação • Limpeza de pele
-Ana Júlia
-Escova • Tranças • Finalização
-Ana Clara
-Alongamento • Manicure • Pedicure
-📍 R. Osório de Morais, esquina com Av. Rio Vermelho — Goiânia, GO, 74355-533
-Agendamento
-Escolha o procedimento, dia e horário disponível.
-1. Procedimento
-2. Dia e horário
-3. Dados
-DONA BELEZA
-Salão & Estética • Seu momento de beleza
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#a87349">
+<meta name="description" content="Dona Beleza Salão & Estética">
+<title>Dona Beleza | Salão & Estética</title>
+
+<style>
+:root{
+  --brown:#9b633d;
+  --brown-dark:#5b3826;
+  --brown-light:#c99d79;
+  --cream:#fbf8f4;
+  --beige:#f2e8de;
+  --white:#fff;
+  --text:#38251b;
+  --muted:#765f50;
+  --border:#eadbd0;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--cream);
+  color:var(--text);
+  line-height:1.5;
+}
+
+button,input,select{
+  font:inherit;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+/* HEADER */
+
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(255,252,249,.96);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+}
+
+.nav{
+  max-width:1100px;
+  margin:auto;
+  padding:14px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.logo-mark{
+  width:55px;
+  height:55px;
+  border:2px solid var(--brown);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  color:var(--brown);
+  font-family:Georgia,serif;
+  font-size:25px;
+  font-weight:bold;
+}
+
+.logo-text strong{
+  display:block;
+  font-family:Georgia,serif;
+  font-size:21px;
+  letter-spacing:2px;
+  color:var(--brown-dark);
+}
+
+.logo-text span{
+  display:block;
+  font-size:10px;
+  letter-spacing:4px;
+  color:var(--muted);
+  margin-top:2px;
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:22px;
+}
+
+.nav-links a{
+  font-size:13px;
+  font-weight:600;
+  color:var(--brown-dark);
+}
+
+.menu{
+  display:none;
+  border:0;
+  background:none;
+  font-size:27px;
+  color:var(--brown-dark);
+}
+
+/* HERO */
+
+.hero{
+  max-width:1100px;
+  margin:auto;
+  padding:45px 20px 35px;
+}
+
+.hero-box{
+  min-height:430px;
+  border-radius:25px;
+  overflow:hidden;
+  position:relative;
+  background:
+    linear-gradient(90deg,
+      rgba(251,248,244,.98) 0%,
+      rgba(251,248,244,.96) 42%,
+      rgba(251,248,244,.25) 72%,
+      rgba(251,248,244,.05) 100%),
+    linear-gradient(120deg,#eee0d2,#c9a27f);
+  display:flex;
+  align-items:center;
+}
+
+.hero-content{
+  width:58%;
+  padding:45px;
+}
+
+.kicker{
+  color:var(--brown);
+  letter-spacing:5px;
+  font-size:13px;
+  font-weight:bold;
+  margin-bottom:15px;
+}
+
+.hero h1{
+  font-family:Georgia,serif;
+  font-size:52px;
+  line-height:1.05;
+  color:var(--brown-dark);
+  margin-bottom:20px;
+}
+
+.hero p{
+  color:var(--muted);
+  font-size:18px;
+  max-width:480px;
+  margin-bottom:28px;
+}
+
+.buttons{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  border:1px solid var(--brown);
+  border-radius:10px;
+  padding:13px 20px;
+  cursor:pointer;
+  font-weight:bold;
+  transition:.2s;
+}
+
+.btn-primary{
+  background:var(--brown);
+  color:white;
+}
+
+.btn-secondary{
+  background:white;
+  color:var(--brown);
+}
+
+.btn:hover{
+  transform:translateY(-1px);
+}
+
+/* SECTIONS */
+
+section{
+  max-width:1100px;
+  margin:auto;
+  padding:55px 20px;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:30px;
+}
+
+.section-title span{
+  color:var(--brown);
+  letter-spacing:4px;
+  font-size:12px;
+  font-weight:bold;
+}
+
+.section-title h2{
+  font-family:Georgia,serif;
+  color:var(--brown-dark);
+  font-size:34px;
+  margin-top:7px;
+}
+
+/* CATEGORIES */
+
+.categories{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+
+.category{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:27px 18px;
+  text-align:center;
+}
+
+.category-icon{
+  font-size:35px;
+  margin-bottom:12px;
+}
+
+.category h3{
+  font-size:16px;
+  margin-bottom:7px;
+}
+
+.category p{
+  color:var(--muted);
+  font-size:14px;
+  margin-bottom:18px;
+}
+
+.category a{
+  color:var(--brown);
+  font-size:13px;
+  font-weight:bold;
+}
+
+/* VALUES */
+
+.values{
+  background:var(--beige);
+  border-radius:25px;
+}
+
+.price-list{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.price{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:15px 17px;
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+}
+
+.price strong{
+  color:var(--brown-dark);
+}
+
+.price span{
+  color:var(--brown);
+  font-weight:bold;
+  white-space:nowrap;
+}
+
+/* PROFESSIONALS */
+
+.professionals{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+
+.professional{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:22px 15px;
+  text-align:center;
+}
+
+.avatar{
+  width:105px;
+  height:105px;
+  margin:0 auto 15px;
+  border-radius:50%;
+  background:linear-gradient(145deg,#dbc1ac,#a8744d);
+  display:grid;
+  place-items:center;
+  color:white;
+  font-family:Georgia,serif;
+  font-size:32px;
+  font-weight:bold;
+}
+
+.professional h3{
+  letter-spacing:2px;
+  color:var(--brown-dark);
+  margin-bottom:8px;
+}
+
+.professional p{
+  color:var(--muted);
+  font-size:14px;
+}
+
+/* BOOKING */
+
+.booking{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:28px;
+  max-width:760px;
+  margin:auto;
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+
+.field{
+  margin-bottom:15px;
+}
+
+.field.full{
+  grid-column:1/-1;
+}
+
+label{
+  display:block;
+  margin-bottom:7px;
+  font-size:13px;
+  font-weight:bold;
+  color:var(--brown-dark);
+}
+
+input,select{
+  width:100%;
+  padding:13px;
+  border:1px solid var(--border);
+  border-radius:9px;
+  background:#fff;
+  color:var(--text);
+  outline:none;
+}
+
+input:focus,select:focus{
+  border-color:var(--brown);
+}
+
+.selected-services{
+  margin:10px 0 18px;
+}
+
+.service-option{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:11px;
+  border:1px solid var(--border);
+  border-radius:9px;
+  margin-bottom:7px;
+}
+
+.service-option input{
+  width:auto;
+}
+
+.notice{
+  background:#f8eee7;
+  border-left:4px solid var(--brown);
+  padding:12px;
+  border-radius:7px;
+  color:var(--muted);
+  font-size:13px;
+  margin:15px 0;
+}
+
+.result{
+  display:none;
+  margin-top:20px;
+  padding:16px;
+  border-radius:10px;
+  background:#edf7ed;
+  border:1px solid #c8dfc8;
+}
+
+.result.show{
+  display:block;
+}
+
+/* CONTACT */
+
+.contact{
+  background:var(--beige);
+  border-radius:20px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.contact-card{
+  background:white;
+  border-radius:13px;
+  padding:20px;
+}
+
+.contact-card h3{
+  color:var(--brown);
+  margin-bottom:7px;
+  font-size:14px;
+}
+
+.contact-card p{
+  color:var(--muted);
+  font-size:14px;
+}
+
+/* FOOTER */
+
+footer{
+  background:#38251b;
+  color:#fff;
+  padding:30px 20px 90px;
+  text-align:center;
+}
+
+footer strong{
+  font-family:Georgia,serif;
+  font-size:20px;
+}
+
+footer p{
+  margin-top:7px;
+  color:#e7d8ce;
+  font-size:13px;
+}
+
+/* MOBILE NAV */
+
+.bottom-nav{
+  display:none;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+  .nav{
+    padding:10px 15px;
+  }
+
+  .logo-mark{
+    width:46px;
+    height:46px;
+    font-size:21px;
+  }
+
+  .logo-text strong{
+    font-size:16px;
+  }
+
+  .logo-text span{
+    font-size:8px;
+    letter-spacing:2.5px;
+  }
+
+  .nav-links{
+    display:none;
+    position:absolute;
+    left:0;
+    right:0;
+    top:67px;
+    background:white;
+    padding:18px;
+    flex-direction:column;
+    border-bottom:1px solid var(--border);
+  }
+
+  .nav-links.open{
+    display:flex;
+  }
+
+  .menu{
+    display:block;
+  }
+
+  .hero{
+    padding:15px;
+  }
+
+  .hero-box{
+    min-height:500px;
+    align-items:flex-end;
+    background:
+      linear-gradient(180deg,
+        rgba(251,248,244,.10) 0%,
+        rgba(251,248,244,.55) 35%,
+        rgba(251,248,244,.98) 62%),
+      linear-gradient(120deg,#e8d6c5,#bd916b);
+  }
+
+  .hero-content{
+    width:100%;
+    padding:27px 22px;
+  }
+
+  .hero h1{
+    font-size:38px;
+  }
+
+  .hero p{
+    font-size:16px;
+  }
+
+  section{
+    padding:42px 15px;
+  }
+
+  .categories{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .price-list{
+    grid-template-columns:1fr;
+  }
+
+  .professionals{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .contact{
+    grid-template-columns:1fr;
+  }
+
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .field.full{
+    grid-column:auto;
+  }
+
+  .booking{
+    padding:20px 15px;
+  }
+
+  .bottom-nav{
+    display:flex;
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    z-index:1000;
+    background:rgba(255,252,249,.97);
+    border-top:1px solid var(--border);
+    justify-content:space-around;
+    padding:9px 4px calc(9px + env(safe-area-inset-bottom));
+  }
+
+  .bottom-nav a{
+    font-size:10px;
+    text-align:center;
+    color:var(--brown-dark);
+  }
+
+  .bottom-nav div{
+    font-size:20px;
+  }
+
+  footer{
+    padding-bottom:100px;
+  }
+}
+
+@media(max-width:430px){
+
+  .categories{
+    gap:9px;
+  }
+
+  .category{
+    padding:18px 10px;
+  }
+
+  .category p{
+    font-size:12px;
+  }
+
+  .professionals{
+    gap:9px;
+  }
+
+  .professional{
+    padding:17px 8px;
+  }
+
+  .avatar{
+    width:80px;
+    height:80px;
+    font-size:25px;
+  }
+
+  .professional h3{
+    font-size:14px;
+  }
+
+  .professional p{
+    font-size:12px;
+  }
+
+  .hero h1{
+    font-size:33px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+
+    <a href="#inicio" class="logo">
+      <div class="logo-mark">DB</div>
+      <div class="logo-text">
+        <strong>DONA BELEZA</strong>
+        <span>SALÃO & ESTÉTICA</span>
+      </div>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#valores">VALORES</a>
+      <a href="#procedimentos">PROCEDIMENTOS</a>
+      <a href="#profissionais">PROFISSIONAIS</a>
+      <a href="#agendar">AGENDAR</a>
+    </nav>
+
+    <button class="menu" onclick="toggleMenu()">☰</button>
+  </div>
+</header>
+
+
+<main>
+
+<!-- INÍCIO -->
+
+<section id="inicio" class="hero">
+
+  <div class="hero-box">
+
+    <div class="hero-content">
+
+      <div class="kicker">
+        REALCE SUA BELEZA
+      </div>
+
+      <h1>
+        Seu melhor momento é aqui!
+      </h1>
+
+      <p>
+        Serviços de beleza com qualidade,
+        atenção e carinho que você merece.
+      </p>
+
+      <div class="buttons">
+
+        <a href="#agendar" class="btn btn-primary">
+          📅 AGENDAR AGORA
+        </a>
+
+        <a
+          class="btn btn-secondary"
+          href="https://wa.me/5562996344257"
+          target="_blank">
+          💬 WHATSAPP
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- PROCEDIMENTOS -->
+
+<section id="procedimentos">
+
+  <div class="section-title">
+    <span>CONHEÇA NOSSOS SERVIÇOS</span>
+    <h2>Procedimentos</h2>
+  </div>
+
+  <div class="categories">
+
+    <div class="category">
+      <div class="category-icon">💅</div>
+      <h3>UNHAS</h3>
+      <p>Manicure, pedicure e cuidados para suas mãos.</p>
+      <a href="#valores">VER VALORES →</a>
+    </div>
+
+    <div class="category">
+      <div class="category-icon">✨</div>
+      <h3>SOBRANCELHAS</h3>
+      <p>Design, henna e cuidados para realçar seu olhar.</p>
+      <a href="#valores">VER VALORES →</a>
+    </div>
+
+    <div class="category">
+      <div class="category-icon">🌿</div>
+      <h3>ESTÉTICA FACIAL</h3>
+      <p>Limpeza de pele e cuidados especiais.</p>
+      <a href="#valores">VER VALORES →</a>
+    </div>
+
+    <div class="category">
+      <div class="category-icon">💇‍♀️</div>
+      <h3>CABELOS</h3>
+      <p>Escova, progressiva, mechas, coloração e mais.</p>
+      <a href="#valores">VER VALORES →</a>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- VALORES -->
+
+<section id="valores">
+
+  <div class="section-title">
+    <span>TABELA DE PREÇOS</span>
+    <h2>Valores dos procedimentos</h2>
+  </div>
+
+  <div class="values">
+
+    <div class="price-list">
+
+      <div class="price">
+        <strong>Unha — promoção</strong>
+        <span>R$ 50</span>
+      </div>
+
+      <div class="price">
+        <strong>Sobrancelha</strong>
+        <span>R$ 40</span>
+      </div>
+
+      <div class="price">
+        <strong>Design + henna</strong>
+        <span>R$ 55</span>
+      </div>
+
+      <div class="price">
+        <strong>Escova — cabelo curto</strong>
+        <span>R$ 60</span>
+      </div>
+
+      <div class="price">
+        <strong>Escova — cabelo médio</strong>
+        <span>R$ 70</span>
+      </div>
+
+      <div class="price">
+        <strong>Escova — cabelo longo</strong>
+        <span>R$ 90</span>
+      </div>
+
+      <div class="price">
+        <strong>Progressiva</strong>
+        <span>A partir de R$ 180</span>
+      </div>
+
+      <div class="price">
+        <strong>Coloração do cliente</strong>
+        <span>R$ 60</span>
+      </div>
+
+      <div class="price">
+        <strong>Coloração do salão</strong>
+        <span>R$ 120</span>
+      </div>
+
+      <div class="price">
+        <strong>Manicure + pedicure</strong>
+        <span>R$ 50</span>
+      </div>
+
+      <div class="price">
+        <strong>Alongamento — aplicação</strong>
+        <span>R$ 120</span>
+      </div>
+
+      <div class="price">
+        <strong>Alongamento — manutenção</strong>
+        <span>R$ 90</span>
+      </div>
+
+      <div class="price">
+        <strong>Esmaltação em gel</strong>
+        <span>R$ 60</span>
+      </div>
+
+      <div class="price">
+        <strong>Banho em gel</strong>
+        <span>R$ 80</span>
+      </div>
+
+      <div class="price">
+        <strong>Blindagem</strong>
+        <span>R$ 60</span>
+      </div>
+
+      <div class="price">
+        <strong>Limpeza de pele</strong>
+        <span>R$ 120</span>
+      </div>
+
+      <div class="price">
+        <strong>Tranças</strong>
+        <span>A partir de R$ 60</span>
+      </div>
+
+      <div class="price">
+        <strong>Pingentes / decoração em trança</strong>
+        <span>R$ 16</span>
+      </div>
+
+    </div>
+
+    <div class="notice">
+      Os valores indicados como “a partir de” podem variar conforme o
+      comprimento, volume, modelo ou avaliação do procedimento.
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- PROFISSIONAIS -->
+
+<section id="profissionais">
+
+  <div class="section-title">
+    <span>NOSSA EQUIPE</span>
+    <h2>Profissionais</h2>
+  </div>
+
+  <div class="professionals">
+
+    <div class="professional">
+
+      <div class="avatar">L</div>
+
+      <h3>LUANA</h3>
+
+      <p>
+        Progressiva<br>
+        Mechas<br>
+        Escova<br>
+        Baby liss
+      </p>
+
+    </div>
+
+
+    <div class="professional">
+
+      <div class="avatar">C</div>
+
+      <h3>CLEO</h3>
+
+      <p>
+        Sobrancelha<br>
+        Depilação<br>
+        Limpeza de pele
+      </p>
+
+    </div>
+
+
+    <div class="professional">
+
+      <div class="avatar">AJ</div>
+
+      <h3>ANA JÚLIA</h3>
+
+      <p>
+        Escova<br>
+        Tranças<br>
+        Finalização
+      </p>
+
+    </div>
+
+
+    <div class="professional">
+
+      <div class="avatar">AC</div>
+
+      <h3>ANA CLARA</h3>
+
+      <p>
+        Alongamento<br>
+        Manicure<br>
+        Pedicure
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- AGENDAMENTO -->
+
+<section id="agendar">
+
+  <div class="section-title">
+    <span>RESERVE SEU HORÁRIO</span>
+    <h2>Agendamento</h2>
+  </div>
+
+  <div class="booking">
+
+    <div class="notice">
+      Escolha a data, o horário e um ou mais procedimentos.
+      O sistema calcula a duração para ajudar a evitar sobreposição de horários.
+    </div>
+
+    <div class="form-grid">
+
+      <div class="field">
+        <label for="nome">Seu nome</label>
+        <input id="nome" type="text" placeholder="Digite seu nome">
+      </div>
+
+      <div class="field">
+        <label for="telefone">WhatsApp</label>
+        <input id="telefone" type="tel" placeholder="(62) 99999-9999">
+      </div>
+
+      <div class="field">
+        <label for="data">Data</label>
+        <input id="data" type="date">
+      </div>
+
+      <div class="field">
+        <label for="hora">Horário</label>
+        <select id="hora">
+          <option value="">Escolha o horário</option>
+        </select>
+      </div>
+
+      <div class="field full">
+
+        <label>Procedimentos</label>
+
+        <div class="selected-services">
+
+          <label class="service-option">
+            <input type="checkbox"
+                   value="Unha"
+                   data-min="90">
+            Unha — 1h30
+          </label>
+
+          <label class="service-option">
+            <input type="checkbox"
+                   value="Sobrancelha"
+                   data-min="30">
+            Sobrancelha — 30 min
+          </label>
+
+          <label class="service-option">
+            <input type="checkbox"
+                   value="Design + henna"
+                   data-min="45">
+            Design + henna — 45 min
+          </label>
+
+          <label class="service-option">
+            <input type="checkbox"
+                   value="Escova"
+                   data-min="40">
+            Escova — 40 min
+          </label>
+
+          <label class="service-option">
+            <input type="checkbox"
+                   value="Progressiva"
+                   data-min="180">
+            Progressiva — 180 min
+          </label>
+
+          <label class="service-option">
+            <input type="checkbox"
+                   value="Coloração"
+                   data-min="120">
+            Coloração — 120 min
+          </label>
+
+          <label class="service-option">
+            <input type="checkbox"
+                   value="Alongamento"
+                   data-min="150">
+            Alongamento — 150 min
+          </label>
+
+          <label class="service-option">
+            <input type="checkbox"
+                   value="Manicure + pedicure"
+                   data-min="90">
+            Manicure + pedicure — 1h30
+          </label>
+
+          <label class="service-option">
+            <input type="checkbox"
+                   value="Esmaltação em gel"
+                   data-min="60">
+            Esmaltação em gel — 1h
+          </label>
+
+          <label class="service-option">
+            <input type="checkbox"
+                   value="Banho em gel"
+                   data-min="90">
+            Banho em gel — 1h30
+          </label>
+
+          <label class="service-option">
+            <input type="checkbox"
+                   value="Blindagem"
+                   data-min="60">
+            Blindagem — 1h
+          </label>
+
+          <label class="service-option">
+            <input type="checkbox"
+                   value="Limpeza de pele"
+                   data-min="90">
+            Limpeza de pele — 1h30
+          </label>
+
+          <label class="service-option">
+            <input type="checkbox"
+                   value="Tranças"
+                   data-min="120">
+            Tranças — a partir de 2h
+          </label>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div id="duracao" class="notice">
+      Selecione os procedimentos para calcular a duração.
+    </div>
+
+    <button class="btn btn-primary"
+            style="width:100%"
+            onclick="agendar()">
+      CONFIRMAR AGENDAMENTO
+    </button>
+
+    <div id="resultado" class="result"></div>
+
+  </div>
+
+</section>
+
+
+<!-- CONTATO -->
+
+<section>
+
+  <div class="contact">
+
+    <div class="contact-card">
+      <h3>📍 ENDEREÇO</h3>
+      <p>
+        R. Osório de Morais,<br>
+        esquina com Av. Rio Vermelho<br>
+        Goiânia - GO, 74355-533
+      </p>
+    </div>
+
+    <div class="contact-card">
+      <h3>🕐 HORÁRIO</h3>
+      <p>
+        Segunda a sábado<br>
+        08:00 às 19:00<br>
+        Domingo fechado
+      </p>
+    </div>
+
+    <div class="contact-card">
+      <h3>✉️ E-MAIL</h3>
+      <p>
+        donabelezaBeauty@gmail.com
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+  <strong>DONA BELEZA</strong>
+
+  <p>
+    Salão & Estética • Beleza, cuidado e estilo.
+  </p>
+
+</footer>
+
+
+<!-- MENU INFERIOR DO CELULAR -->
+
+<nav class="bottom-nav">
+
+  <a href="#inicio">
+    <div>⌂</div>
+    HOME
+  </a>
+
+  <a href="#procedimentos">
+    <div>✂</div>
+    PROCEDIMENTOS
+  </a>
+
+  <a href="#profissionais">
+    <div>♙</div>
+    PROFISSIONAIS
+  </a>
+
+  <a href="#agendar">
+    <div>□</div>
+    AGENDAR
+  </a>
+
+  <a href="https://wa.me/5562996344257" target="_blank">
+    <div>◉</div>
+    CONTATO
+  </a>
+
+</nav>
+
+
+<script>
+
+function toggleMenu(){
+
+  document
+    .getElementById("navLinks")
+    .classList.toggle("open");
+
+}
+
+
+/* DATA MÍNIMA */
+
+const dataInput = document.getElementById("data");
+
+const hoje = new Date();
+
+const ano = hoje.getFullYear();
+
+const mes = String(hoje.getMonth()+1).padStart(2,"0");
+
+const dia = String(hoje.getDate()).padStart(2,"0");
+
+dataInput.min = `${ano}-${mes}-${dia}`;
+
+
+/* HORÁRIOS */
+
+const horaSelect = document.getElementById("hora");
+
+function criarHorarios(){
+
+  horaSelect.innerHTML =
+    '<option value="">Escolha o horário</option>';
+
+  for(let h=8; h<=18; h++){
+
+    for(let m=0; m<60; m+=30){
+
+      if(h===18 && m>0) continue;
+
+      const hora =
+        String(h).padStart(2,"0") +
+        ":" +
+        String(m).padStart(2,"0");
+
+      const option =
+        document.createElement("option");
+
+      option.value = hora;
+
+      option.textContent = hora;
+
+      horaSelect.appendChild(option);
+
+    }
+
+  }
+
+}
+
+criarHorarios();
+
+
+/* DURAÇÃO */
+
+const checks =
+  document.querySelectorAll(
+    '.service-option input'
+  );
+
+checks.forEach(check => {
+
+  check.addEventListener(
+    "change",
+    calcularDuracao
+  );
+
+});
+
+
+function calcularDuracao(){
+
+  let total = 0;
+
+  checks.forEach(check => {
+
+    if(check.checked){
+
+      total +=
+        Number(check.dataset.min);
+
+    }
+
+  });
+
+  const duracao =
+    document.getElementById("duracao");
+
+  if(total === 0){
+
+    duracao.textContent =
+      "Selecione os procedimentos para calcular a duração.";
+
+    return;
+
+  }
+
+  const horas =
+    Math.floor(total / 60);
+
+  const minutos =
+    total % 60;
+
+  let texto = "";
+
+  if(horas > 0)
+    texto += horas + "h ";
+
+  if(minutos > 0)
+    texto += minutos + "min";
+
+  duracao.textContent =
+    "Duração aproximada: " + texto;
+
+}
+
+
+/* AGENDAMENTO LOCAL */
+
+function agendar(){
+
+  const nome =
+    document.getElementById("nome").value.trim();
+
+  const telefone =
+    document.getElementById("telefone").value.trim();
+
+  const data =
+    document.getElementById("data").value;
+
+  const hora =
+    document.getElementById("hora").value;
+
+  const selecionados =
+    [...checks].filter(
+      check => check.checked
+    );
+
+  const resultado =
+    document.getElementById("resultado");
+
+
+  if(!nome || !telefone || !data || !hora){
+
+    resultado.className =
+      "result show";
+
+    resultado.style.background =
+      "#fff0f0";
+
+    resultado.style.borderColor =
+      "#e0bcbc";
+
+    resultado.innerHTML =
+      "⚠️ Preencha nome, WhatsApp, data e horário.";
+
+    return;
+
+  }
+
+
+  if(selecionados.length === 0){
+
+    resultado.className =
+      "result show";
+
+    resultado.style.background =
+      "#fff0f0";
+
+    resultado.innerHTML =
+      "⚠️ Escolha pelo menos um procedimento.";
+
+    return;
+
+  }
+
+
+  let duracao = 0;
+
+  const nomes = [];
+
+  selecionados.forEach(check => {
+
+    duracao +=
+      Number(check.dataset.min);
+
+    nomes.push(check.value);
+
+  });
+
+
+  const inicio =
+    minutosDoDia(hora);
+
+  const fim =
+    inicio + duracao;
+
+
+  const reservas =
+    JSON.parse(
+      localStorage.getItem(
+        "donaBelezaReservas"
+      ) || "[]"
+    );
+
+
+  const conflito =
+    reservas.some(reserva => {
+
+      if(reserva.data !== data)
+        return false;
+
+      const inicioExistente =
+        minutosDoDia(reserva.hora);
+
+      const fimExistente =
+        inicioExistente +
+        reserva.duracao;
+
+      return (
+        inicio < fimExistente &&
+        fim > inicioExistente
+      );
+
+    });
+
+
+  if(conflito){
+
+    resultado.className =
+      "result show";
+
+    resultado.style.background =
+      "#fff0f0";
+
+    resultado.style.borderColor =
+      "#e0bcbc";
+
+    resultado.innerHTML =
+      "⚠️ Esse horário entra em conflito com outro agendamento neste aparelho. Escolha outro horário.";
+
+    return;
+
+  }
+
+
+  reservas.push({
+
+    nome:nome,
+
+    telefone:telefone,
+
+    data:data,
+
+    hora:hora,
+
+    duracao:duracao,
+
+    procedimentos:nomes
+
+  });
+
+
+  localStorage.setItem(
+    "donaBelezaReservas",
+    JSON.stringify(reservas)
+  );
+
+
+  const dataFormatada =
+    data.split("-").reverse().join("/");
+
+
+  resultado.className =
+    "result show";
+
+  resultado.style.background =
+    "#edf7ed";
+
+  resultado.style.borderColor =
+    "#c8dfc8";
+
+  resultado.innerHTML =
+
+    "<strong>✅ Horário selecionado!</strong><br><br>" +
+
+    "Cliente: " + nome + "<br>" +
+
+    "Data: " + dataFormatada + "<br>" +
+
+    "Horário: " + hora + "<br>" +
+
+    "Procedimentos: " +
+    nomes.join(", ") +
+
+    "<br><br>" +
+
+    "Agora toque no botão abaixo para enviar " +
+    "o pedido pelo WhatsApp." +
+
+    '<br><br>' +
+
+    '<a class="btn btn-primary" ' +
+
+    'target="_blank" ' +
+
+    'href="' + gerarWhatsApp(
+      nome,
+      telefone,
+      dataFormatada,
+      hora,
+      nomes
+    ) + '">' +
+
+    'ENVIAR PELO WHATSAPP' +
+
+    '</a>';
+
+}
+
+
+function minutosDoDia(hora){
+
+  const partes =
+    hora.split(":");
+
+  return (
+    Number(partes[0]) * 60 +
+    Number(partes[1])
+  );
+
+}
+
+
+function gerarWhatsApp(
+  nome,
+  telefone,
+  data,
+  hora,
+  procedimentos
+){
+
+  const mensagem =
+
+    "Olá, Dona Beleza! 💕\n\n" +
+
+    "Gostaria de solicitar um agendamento.\n\n" +
+
+    "Nome: " + nome + "\n" +
+
+    "WhatsApp: " + telefone + "\n" +
+
+    "Data: " + data + "\n" +
+
+    "Horário: " + hora + "\n" +
+
+    "Procedimentos: " +
+    procedimentos.join(", ") +
+
+    "\n\n" +
+
+    "Aguardo a confirmação do salão. 💕";
+
+
+  return (
+    "https://wa.me/5562996344257?text=" +
+    encodeURIComponent(mensagem)
+  );
+
+}
+
+</script>
+
+</body>
+</html>
